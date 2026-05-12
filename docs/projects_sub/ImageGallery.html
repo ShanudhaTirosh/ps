@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery - Shanudha Tirosh (ShanuFx)</title>
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            /* Background and text color are handled by Tailwind classes on body */
+            line-height: 1.6;
+        }
+
+         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
+ .text-gradient {
+ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-clip: text;
+ text-fill-color: transparent;
+}
+        .section-divider {
+ height: 2px;
+background: linear-gradient(90deg, #ff416c, #ff4b2b);
+ width: 80px;
+ margin: 1rem auto 2rem auto; /* Centered divider */
+}
+
+         /* Style for the modal overlay */
+        .modal-overlay {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             z-index: 100; /* Higher z-index to appear on top */
+             -webkit-backdrop-filter: blur(5px); /* Optional blur effect */
+             -webkit-backdrop-filter: blur(5px); /* Safari support */
+        }
+
+         /* Style for the modal content */
+        .modal-content {
+             position: relative; /* For positioning close button */
+             background-color: #1a1a1a; /* Dark background */
+             padding: 1.5rem; /* p-6 in Tailwind */
+             border-radius: 0.5rem; /* rounded-lg in Tailwind */
+             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+             max-width: 90%; /* Limit max width */
+             max-height: 90%; /* Limit max height */
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             overflow: hidden; /* Hide parts of the image that might exceed */
+        }
+
+         /* Style for the modal image */
+        .modal-image {
+             display: block; /* Remove extra space below image */
+             max-width: 100%; /* Ensure image fits within modal */
+             max-height: 70vh; /* Limit image height to avoid overflow, adjust as needed */
+             object-fit: contain; /* Ensure entire image is visible, maintaining aspect ratio */
+             margin-bottom: 1rem; /* Space below image */
+        }
+
+         /* Style for the close button */
+        .close-button {
+             position: absolute;
+             top: 10px;
+             right: 10px;
+             background: none;
+             border: none;
+             font-size: 1.8rem; /* Larger size */
+             color: #e0e0e0; /* Light text color */
+             cursor: pointer;
+             z-index: 110; /* Higher z-index than modal content */
+             transition: color 0.3s ease;
+        }
+        .close-button:hover {
+             color: var(--secondary); /* Highlight on hover */
+        }
+
+        /* Style for navigation buttons */
+        .nav-button {
+             position: absolute;
+             top: 50%; /* Center vertically */
+             transform: translateY(-50%); /* Adjust for button height */
+             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+             color: white;
+             border: none;
+             padding: 1rem;
+             cursor: pointer;
+             font-size: 1.5rem;
+             z-index: 105; /* Below close button, above image */
+             transition: background-color 0.3s ease;
+             border-radius: 0.25rem; /* Slightly rounded */
+        }
+        .nav-button:hover {
+             background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+        }
+        #prevButton {
+             left: 10px;
+        }
+        #nextButton {
+             right: 10px;
+        }
+         /* Hide navigation buttons if not applicable (e.g., only one image) - handled by JS */
+         .nav-button.hidden {
+             display: none;
+         }
+
+
+    </style>
+
+    <!-- ===== BRANDING & SEO ===== -->
+    <meta name="description" content="A premium utility tool developed by Shanudha Tirosh (ShanuFx). Explore more high-performance tools on the official portfolio." />
+    <meta name="keywords" content="Shanudha Tirosh, ShanuFx, HTML Utility, Web Tool, Full-stack Engineering, Sri Lanka Tech" />
+    <meta name="author" content="Shanudha Tirosh" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#04040a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ShanuFx Innovations" />
+    <meta property="og:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ShanuFx" />
+    <meta name="twitter:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta property="og:title" content="Image Gallery | ShanuFx" />
+    <meta property="og:description" content="Image Gallery — a premium utility by Shanudha Tirosh (ShanuFx). Part of the ShanuFx Innovations portfolio." />
+    <meta property="og:url" content="https://shanudhatirosh.github.io/projects_sub/image-gallery" />
+    <meta name="twitter:title" content="Image Gallery | ShanuFx" />
+    <meta name="twitter:description" content="Image Gallery — built by Shanudha Tirosh. Explore the full portfolio at ShanuFx Innovations." />
+</head>
+<body class="bg-darkbg text-lighttext">
+
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header><script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+             duration: 800, // Shorter duration for faster feel
+ once: false, // Allow animation on scroll up/down
+ offset: 50, // Trigger animations slightly sooner
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Note: Typing effect script from index.html is not needed here.
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Image Data ---
+            // Add your image file paths and captions here.
+            // Assume images are in the 'assets/images/gallery/' folder relative to this HTML file.
+            const images = [
+                { src: 'assets/images/gallery/image1.jpg', caption: 'Image 1 Caption' },
+                { src: 'assets/images/gallery/image2.jpg', caption: 'Image 2 Caption' },
+                { src: 'assets/images/gallery/image3.jpg', caption: 'Image 3 Caption' },
+                { src: 'assets/images/gallery/image4.jpg', caption: 'Image 4 Caption' },
+                { src: 'assets/images/gallery/image5.jpg', caption: 'Image 5 Caption' },
+                 // Add more image objects here
+                 // Example: { src: 'assets/images/gallery/your_photo.png', caption: 'A photo from my project' },
+                 // Example: { src: 'assets/images/gallery/another_image.jpg', caption: 'Beautiful scenery' },
+            ];
+
+            // --- DOM Elements ---
+            const imageGrid = document.getElementById('imageGrid');
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeButton = document.getElementById('closeButton');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+
+            let currentImageIndex = 0; // To keep track of the currently viewed image index
+
+
+            // --- Functions ---
+
+            // Render the image grid
+            function renderGallery() {
+                 imageGrid.innerHTML = ''; // Clear loading placeholder
+
+                 if (images.length === 0) {
+                     imageGrid.innerHTML = '<p class="text-center text-gray-400 col-span-full">No images to display.</p>';
+                     return;
+                 }
+
+                images.forEach((image, index) => {
+                    const galleryItem = document.createElement('div');
+                    // Tailwind classes for grid item / thumbnail
+                    galleryItem.className = 'relative group cursor-pointer overflow-hidden rounded-lg shadow-lg bg-cardbg'
+                                             + ' transform transition duration-300 hover:scale-105'; // Add hover effect
+
+                    const img = document.createElement('img');
+                    img.src = image.src;
+                    img.alt = image.caption || `Gallery Image ${index + 1}`; // Use caption as alt text
+                     // Tailwind classes for thumbnail image
+                    img.className = 'w-full h-48 object-cover rounded-lg transition duration-300 group-hover:opacity-80'; // Ensure cover and hover effect
+
+                    // Optional: Overlay for hover effect or icon
+                    const overlay = document.createElement('div');
+                     overlay.className = 'absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300';
+                    overlay.innerHTML = '<i class="fas fa-expand text-white text-2xl"></i>'; // Expand icon
+
+                    galleryItem.appendChild(img);
+                    galleryItem.appendChild(overlay);
+
+
+                    // Add click listener to open modal
+                    galleryItem.addEventListener('click', () => openModal(index));
+
+                    // Add AOS animation to each gallery item
+                    galleryItem.setAttribute('data-aos', 'fade-up');
+                     galleryItem.setAttribute('data-aos-delay', index * 50); // Stagger animation
+
+                    imageGrid.appendChild(galleryItem);
+                });
+            }
+
+            // Open the modal
+            function openModal(index) {
+                 if (index < 0 || index >= images.length) return; // Validate index
+
+                currentImageIndex = index; // Set current index
+                modalImage.src = images[currentImageIndex].src; // Set modal image source
+                modalImage.alt = images[currentImageIndex].caption || `Gallery Image ${currentImageIndex + 1}`; // Set modal image alt text
+                imageCaption.textContent = images[currentImageIndex].caption || ''; // Set caption
+
+                // Show the modal overlay
+                imageModal.classList.remove('hidden');
+
+                 // Show/hide navigation buttons if only one image
+                 if (images.length <= 1) {
+                     prevButton.classList.add('hidden');
+                     nextButton.classList.add('hidden');
+                 } else {
+                      prevButton.classList.remove('hidden');
+                      nextButton.classList.remove('hidden');
+                 }
+
+
+                 // Optional: Prevent body scrolling when modal is open
+                 document.body.style.overflow = 'hidden';
+
+            }
+
+            // Close the modal
+             function closeModal(event) {
+                 // Close only if clicked on the overlay or the close button, not the image itself
+                 if (event.target === imageModal || event.target === closeButton || closeButton.contains(event.target)) {
+                    imageModal.classList.add('hidden');
+                     // Restore body scrolling
+                    document.body.style.overflow = '';
+                 }
+             }
+
+            // Navigate to the previous image
+            function showPrevImage() {
+                currentImageIndex--;
+                if (currentImageIndex < 0) {
+                    currentImageIndex = images.length - 1; // Wrap around to the last image
+                }
+                updateModalImage(); // Update the modal content
+            }
+
+            // Navigate to the next image
+            function showNextImage() {
+                currentImageIndex++;
+                if (currentImageIndex >= images.length) {
+                    currentImageIndex = 0; // Wrap around to the first image
+                }
+                updateModalImage(); // Update the modal content
+            }
+
+            // Update modal image and caption based on current index
+            function updateModalImage() {
+                 if (images.length === 0) return; // Should not happen if modal is open, but safety check
+                modalImage.src = images[currentImageIndex].src;
+                modalImage.alt = images[currentImageIndex].caption || `Gallery Image ${currentImageIndex + 1}`;
+                imageCaption.textContent = images[currentImageIndex].caption || '';
+            }
+
+
+            // --- Event Listeners for Modal Navigation ---
+            prevButton.addEventListener('click', (event) => {
+                 event.stopPropagation(); // Prevent modal from closing when clicking button
+                 showPrevImage();
+            });
+            nextButton.addEventListener('click', (event) => {
+                 event.stopPropagation(); // Prevent modal from closing when clicking button
+                 showNextImage();
+            });
+            closeButton.addEventListener('click', (event) => {
+                 event.stopPropagation(); // Prevent modal from closing
+                 closeModal(event); // Call closeModal function
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !imageModal.classList.contains('hidden')) {
+                     closeModal(event); // Call closeModal function
+                }
+                 // Navigate with arrow keys when modal is open
+                 if (!imageModal.classList.contains('hidden')) {
+                      if (event.key === 'ArrowLeft') {
+                           showPrevImage();
+                      } else if (event.key === 'ArrowRight') {
+                           showNextImage();
+                      }
+                 }
+            });
+
+
+            // --- Initialization ---
+            renderGallery(); // Load and display the image grid when the page loads
+        });
+    </script>
+    <footer id="main-footer" style="background:#04040a;border-top:1px solid rgba(255,255,255,0.06);padding:2.5rem 1.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#4b5563;" role="contentinfo"><div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem;"><a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;"><div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:0.75rem;">S</div><span style="color:#f1f0f7;font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;">ShanuFx</span></a><div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Home</a><a href="/showcase" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Showcase</a><a href="https://github.com/ShanudhaTirosh" target="_blank" rel="noopener" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">GitHub</a></div><p style="margin:0;">© 2026 <span style="color:#7c3aed;">Shanudha Tirosh</span> (ShanuFx)</p></div></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="/" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="/showcase" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Showcase</a>
+    </div>
+    <script>
+        loadHeader('../');
+        loadFooter('../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+    </script>
+
+    <!-- ===== BACK TO SHOWCASE BUTTON ===== -->
+    <a href="/showcase" id="back-to-showcase"
+       style="
+           position:fixed;
+           bottom:1.75rem;
+           right:1.75rem;
+           z-index:9999;
+           display:inline-flex;
+           align-items:center;
+           gap:0.5rem;
+           padding:0.65rem 1.25rem;
+           border-radius:50px;
+           background:linear-gradient(135deg,#7c3aed,#06b6d4);
+           color:#fff;
+           font-family:'JetBrains Mono',monospace;
+           font-size:0.75rem;
+           font-weight:700;
+           letter-spacing:0.04em;
+           text-decoration:none;
+           box-shadow:0 4px 24px rgba(124,58,237,0.45);
+           transition:transform 0.2s,box-shadow 0.2s;
+       "
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(124,58,237,0.6)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(124,58,237,0.45)'"
+       aria-label="Back to ShanuFx Showcase">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Showcase
+    </a>
+    <!-- ===== BRANDING CONSOLE LOG ===== -->
+    <script>
+    (function() {
+        function logBranding() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    console.clear();
+                    console.log(
+                        "%cShanuFx",
+                        "color: #7c3aed; font-size: 50px; font-weight: bold; font-family: sans-serif; text-shadow: 3px 3px 0px rgba(124, 58, 237, 0.2);"
+                    );
+                    console.log(
+                        "%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh",
+                        "color: #f59e0b; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                    console.log(
+                        %c🌐 Is that your IP: ,
+                        "color: #06b6d4; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                })
+                .catch(() => {
+                    console.log("%cShanuFx", "color: #7c3aed; font-size: 50px; font-weight: bold;");
+                    console.log("%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh", "color: #f59e0b; font-size: 14px; font-weight: bold;");
+                });
+        }
+        logBranding();
+        setInterval(logBranding, 30000);
+    })();
+    </script>
+</body>
+</html>
