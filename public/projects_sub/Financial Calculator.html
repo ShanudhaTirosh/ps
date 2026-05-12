@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calculator - Shanudha Tirosh (ShanuFx)</title>
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            /* Background and text color are handled by Tailwind classes on body */
+            line-height: 1.6;
+        }
+
+         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
+ .text-gradient {
+ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-clip: text;
+ text-fill-color: transparent;
+}
+        .section-divider {
+height: 2px;
+ background: linear-gradient(90deg, #ff416c, #ff4b2b);
+width: 80px;
+margin: 1rem auto 2rem auto; /* Centered divider */
+}
+
+        /* Optional: Custom styles if needed */
+        *, *::before, *::after {
+             box-sizing: border-box;
+        }
+
+        /* Style for the compounding frequency dropdown when visible */
+        #compoundingFrequencyGroup:not(.hidden) {
+             display: block; /* Ensure it uses block layout when not hidden */
+        }
+
+
+    </style>
+
+    <!-- ===== BRANDING & SEO ===== -->
+    <meta name="description" content="A premium utility tool developed by Shanudha Tirosh (ShanuFx). Explore more high-performance tools on the official portfolio." />
+    <meta name="keywords" content="Shanudha Tirosh, ShanuFx, HTML Utility, Web Tool, Full-stack Engineering, Sri Lanka Tech" />
+    <meta name="author" content="Shanudha Tirosh" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#04040a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ShanuFx Innovations" />
+    <meta property="og:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ShanuFx" />
+    <meta name="twitter:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta property="og:title" content="Financial Calculator | ShanuFx" />
+    <meta property="og:description" content="Financial Calculator — a premium utility by Shanudha Tirosh (ShanuFx). Part of the ShanuFx Innovations portfolio." />
+    <meta property="og:url" content="https://shanudhatirosh.github.io/projects_sub/financial-calculator" />
+    <meta name="twitter:title" content="Financial Calculator | ShanuFx" />
+    <meta name="twitter:description" content="Financial Calculator — built by Shanudha Tirosh. Explore the full portfolio at ShanuFx Innovations." />
+</head>
+<body class="bg-darkbg text-lighttext">
+
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main class="py-16 pt-28 flex justify-center items-center min-h-screen"> <section id="financial-calculator-project" class="container mx-auto px-6 max-w-6xl flex justify-center items-center">
+            <div class="w-full max-w-sm" data-aos="zoom-in" data-aos-delay="200"> <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2" data-aos="fade-up">Financial Calculator</h2> <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="150">Calculate loan payments or deposit interest.</p>
+
+
+                <div class="calculator bg-cardbg rounded-lg shadow-xl border border-primary/20">
+                    <div class="calculator-header bg-primary text-white p-5 text-center rounded-t-lg">
+                        <h2 class="text-2xl font-bold">Calculation Details</h2> </div>
+                    <div class="calculator-body p-6">
+
+                         <div class="calculation-type-group mb-6">
+                             <label class="block mb-2 text-lighttext font-medium text-center">Select Calculation Type:</label>
+                             <div class="flex justify-center gap-6">
+                                 <div>
+                                     <input type="radio" id="loanCalculation" name="calculationType" value="loan" checked class="mr-1">
+                                     <label for="loanCalculation" class="text-lighttext font-medium">Loan</label>
+                                 </div>
+                                 <div>
+                                     <input type="radio" id="depositCalculation" name="calculationType" value="deposit" class="mr-1">
+                                     <label for="depositCalculation" class="text-lighttext font-medium">Deposit</label>
+                                 </div>
+                             </div>
+                         </div>
+
+
+                        <div class="radio-group flex justify-center gap-6 mb-6">
+                            <label class="block mb-2 text-lighttext font-medium text-center w-full">Select Interest Type:</label>
+                             <div class="flex justify-center gap-6 w-full">
+                                 <div>
+                                     <input type="radio" id="simpleInterest" name="interestType" value="simple" checked class="mr-1">
+                                     <label for="simpleInterest" class="text-lighttext font-medium">Simple</label>
+                                 </div>
+                                 <div>
+                                     <input type="radio" id="compoundInterest" name="interestType" value="compound" class="mr-1">
+                                     <label for="compoundInterest" class="text-lighttext font-medium">Compound</label>
+                                 </div>
+                             </div>
+                        </div>
+
+                        <div class="input-group mb-5">
+                            <label for="principalAmount" class="block mb-2 text-lighttext font-medium">Amount (Rs)</label> <input type="number" id="principalAmount" min="1" step="any" placeholder="Enter amount"
+                                   class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500">
+                            <div class="note text-sm text-gray-400 mt-1 text-center">Enter Loan Amount or Deposit Amount</div> </div>
+
+                        <div class="input-group mb-5">
+                            <label for="annualInterest" class="block mb-2 text-lighttext font-medium">Annual Interest Rate (%)</label>
+                            <input type="number" id="annualInterest" min="0" max="100" step="any" placeholder="Enter interest rate"
+                                   class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500">
+                            <div class="note text-sm text-gray-400 mt-1 text-center">Enter the annual interest rate</div> </div>
+
+                        <div class="input-group mb-5">
+                            <label for="duration" class="block mb-2 text-lighttext font-medium">Duration (Months)</label>
+                            <input type="number" id="duration" min="1" max="1200" placeholder="Enter duration in months"
+                                   class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500">
+                            <div class="note text-sm text-gray-400 mt-1 text-center">Enter duration in months (e.g., 12 for 1 year, 60 for 5 years, 1200 for 100 years for deposit)</div> </div>
+
+                        <div id="compoundingFrequencyGroup" class="input-group mb-5 hidden">
+                            <label for="compoundingFrequency" class="block mb-2 text-lighttext font-medium">Compounding Frequency:</label>
+                            <select id="compoundingFrequency"
+                                    class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="12">Monthly</option>
+                                <option value="4">Quarterly</option>
+                                <option value="2">Semi-annually</option>
+                                <option value="1">Annually</option>
+                            </select>
+                        </div>
+
+
+                        <div class="button-group flex gap-4 mt-6">
+                            <button class="calculate-btn flex-1 px-4 py-2 bg-primary text-white font-semibold rounded-md hover:bg-secondary transition duration-300">Calculate</button> <button class="clear-btn flex-1 px-4 py-2 bg-gray-700 text-lighttext font-semibold rounded-md hover:bg-gray-600 transition duration-300 border border-gray-600">Clear</button> </div>
+
+                        <div id="error" class="error text-primary text-center mt-4 text-sm font-medium"></div>
+                        <div id="result" class="result mt-6 p-4 bg-gray-800 rounded-md text-center" style="display: none;">
+                            <p id="result1" class="text-secondary font-bold my-2"></p>
+                            <p id="result2" class="text-secondary font-bold my-2"></p>
+                            <p id="result3" class="text-secondary font-bold my-2"></p> </div>
+                    </div>
+                </div>
+            </div>
+         </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+             duration: 800, // Shorter duration for faster feel
+ once: false, // Allow animation on scroll up/down
+ offset: 50, // Trigger animations slightly sooner
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Note: Typing effect script from index.html is not needed here.
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const principalInput = document.getElementById('principalAmount'); // Amount input
+            const annualInterestInput = document.getElementById('annualInterest');
+            const durationInput = document.getElementById('duration');
+            const calculationTypeInputs = document.querySelectorAll('input[name="calculationType"]');
+            const interestTypeInputs = document.querySelectorAll('input[name="interestType"]');
+            const compoundingFrequencyGroup = document.getElementById('compoundingFrequencyGroup');
+            const compoundingFrequencySelect = document.getElementById('compoundingFrequency');
+            const calculateBtn = document.querySelector('.calculate-btn');
+            const clearBtn = document.querySelector('.clear-btn');
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            const result1 = document.getElementById('result1');
+            const result2 = document.getElementById('result2');
+            const result3 = document.getElementById('result3'); // For monthly payment if needed
+
+            // Event Listeners
+            calculateBtn.addEventListener('click', performCalculation);
+            clearBtn.addEventListener('click', clearForm);
+
+            // Listen for changes in calculation type or interest type to update UI
+            calculationTypeInputs.forEach(input => input.addEventListener('change', updateUI));
+            interestTypeInputs.forEach(input => input.addEventListener('change', updateUI));
+
+
+            function formatCurrency(amount) {
+                 if (isNaN(amount)) return 'Invalid Amount';
+return 'Rs. ' + parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+            function validateInputs() {
+                const principalAmount = parseFloat(principalInput.value);
+                const annualInterest = parseFloat(annualInterestInput.value);
+                const duration = parseInt(durationInput.value);
+
+                errorDiv.textContent = ''; // Clear previous errors
+                resultDiv.style.display = 'none'; // Hide results by default
+
+                if (isNaN(principalAmount) || principalAmount <= 0) {
+                    errorDiv.textContent = 'Please enter a valid amount (greater than 0).';
+                    return false;
+                }
+
+                 // Allow 0% interest, reasonable upper limit 100%
+                if (isNaN(annualInterest) || annualInterest < 0 || annualInterest > 100) {
+                    errorDiv.textContent = 'Annual interest rate must be between 0% and 100%.';
+                    return false;
+                }
+
+                 // Allow duration from 1 month up to 1200 months (100 years) for flexibility
+                if (isNaN(duration) || duration < 1 || duration > 1200) {
+                    errorDiv.textContent = 'Duration must be between 1 and 1200 months.';
+                    return false;
+                }
+
+                return true; // All inputs are valid
+            }
+
+            function updateUI() {
+                 const selectedCalculationType = document.querySelector('input[name="calculationType"]:checked').value;
+                 const selectedInterestType = document.querySelector('input[name="interestType"]:checked').value;
+
+                 // Show/hide Compounding Frequency based on Calculation Type and Interest Type
+                 if (selectedCalculationType === 'deposit' && selectedInterestType === 'compound') {
+                     compoundingFrequencyGroup.classList.remove('hidden');
+                 } else {
+                     compoundingFrequencyGroup.classList.add('hidden');
+                 }
+
+                 // Update labels if needed - for now, the result paragraph IDs are fixed,
+                 // but their content will be dynamic.
+                 // The placeholder/note text could also be updated dynamically if desired.
+            }
+
+
+            function performCalculation() {
+                if (!validateInputs()) {
+                    return; // Stop if validation fails
+                }
+
+                const principalAmount = parseFloat(principalInput.value);
+                const annualInterest = parseFloat(annualInterestInput.value);
+                const durationInMonths = parseInt(durationInput.value);
+                const selectedCalculationType = document.querySelector('input[name="calculationType"]:checked').value;
+                const selectedInterestType = document.querySelector('input[name="interestType"]:checked').value;
+
+                let interestAmount = 0;
+                let totalAmount = 0;
+                let monthlyPayment = 0; // Only applicable for loans
+
+
+                if (selectedCalculationType === 'loan') {
+                    // --- Loan Calculation Logic ---
+                    if (selectedInterestType === 'simple') {
+                        // Simple Interest Loan
+                        interestAmount = (principalAmount * annualInterest * durationInMonths) / 1200;
+                        totalAmount = principalAmount + interestAmount;
+                        monthlyPayment = totalAmount / durationInMonths;
+
+                         // Display results for Simple Loan
+                        result1.textContent = `Total Interest: ${formatCurrency(interestAmount)}`;
+                        result2.textContent = `Total Amount: ${formatCurrency(totalAmount)}`;
+                        result3.textContent = `Monthly Payment: ${formatCurrency(monthlyPayment)}`;
+                         result3.style.display = 'block'; // Show monthly payment
+
+
+                    } else { // Compound Interest Loan (Amortizing Loan)
+                        const monthlyRate = annualInterest / 1200; // Monthly interest rate as a decimal
+                        const numberOfPayments = durationInMonths;
+
+                        if (monthlyRate === 0) {
+                            // Handle 0% interest rate separately
+                            monthlyPayment = principalAmount / numberOfPayments;
+                            interestAmount = 0;
+                            totalAmount = principalAmount;
+                        } else {
+                            // Amortizing loan monthly payment formula
+                            const numerator = monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments);
+                            const denominator = Math.pow(1 + monthlyRate, numberOfPayments) - 1;
+
+                            if (denominator === 0) { // Should not happen with valid duration > 0 and rate > 0
+                                errorDiv.textContent = 'Calculation error. Please check inputs.';
+                                return;
+                            }
+
+                            monthlyPayment = principalAmount * (numerator / denominator);
+                            totalAmount = monthlyPayment * numberOfPayments;
+                            interestAmount = totalAmount - principalAmount;
+                        }
+
+                        // Display results for Amortizing Loan
+                        result1.textContent = `Estimated Total Interest: ${formatCurrency(interestAmount)}`;
+                        result2.textContent = `Estimated Total Paid: ${formatCurrency(totalAmount)}`;
+                        result3.textContent = `Estimated Monthly Payment: ${formatCurrency(monthlyPayment)}`;
+                         result3.style.display = 'block'; // Show monthly payment
+
+                    }
+
+                } else { // selectedCalculationType === 'deposit'
+                    // --- Deposit Calculation Logic ---
+                    const annualRateDecimal = annualInterest / 100; // Annual interest rate as a decimal
+                    const durationInYears = durationInMonths / 12; // Duration in years
+
+                    if (selectedInterestType === 'simple') {
+                        // Simple Interest Deposit
+                        interestAmount = principalAmount * annualRateDecimal * durationInYears;
+                        totalAmount = principalAmount + interestAmount;
+
+                        // Display results for Simple Deposit
+                        result1.textContent = `Total Interest Earned: ${formatCurrency(interestAmount)}`;
+                        result2.textContent = `Total Amount: ${formatCurrency(totalAmount)}`;
+                        result3.style.display = 'none'; // Hide monthly payment
+
+                    } else { // Compound Interest Deposit
+                        const compoundingFrequency = parseInt(compoundingFrequencySelect.value); // Times compounded per year
+
+                        if (compoundingFrequency <= 0) { // Should not happen with dropdown, but safety check
+                             errorDiv.textContent = 'Invalid compounding frequency.';
+                             return;
+                        }
+
+                        const ratePerPeriod = annualRateDecimal / compoundingFrequency; // Interest rate per compounding period
+                        const numberOfPeriods = durationInYears * compoundingFrequency; // Total number of compounding periods
+
+                        // Compound Interest (Future Value) formula
+                        totalAmount = principalAmount * Math.pow(1 + ratePerPeriod, numberOfPeriods);
+                        interestAmount = totalAmount - principalAmount;
+
+                        // Display results for Compound Deposit
+                        result1.textContent = `Total Interest Earned: ${formatCurrency(interestAmount)}`;
+                        result2.textContent = `Total Amount: ${formatCurrency(totalAmount)}`;
+                         result3.style.display = 'none'; // Hide monthly payment
+
+                    }
+                     monthlyPayment = 0; // Ensure monthly payment is zero for deposits
+                }
+
+
+                resultDiv.style.display = 'block'; // Show results section
+            }
+
+            function clearForm() {
+                principalInput.value = '';
+                annualInterestInput.value = '';
+                durationInput.value = '';
+                document.getElementById('loanCalculation').checked = true; // Default back to Loan
+                document.getElementById('simpleInterest').checked = true; // Default back to Simple Interest
+                 compoundingFrequencySelect.value = '12'; // Default compounding to Monthly
+                errorDiv.textContent = '';
+                resultDiv.style.display = 'none'; // Hide results
+                 updateUI(); // Reset UI based on default selections
+            }
+
+             // Initial UI setup
+             updateUI();
+
+        });
+    </script>
+    <footer id="main-footer" style="background:#04040a;border-top:1px solid rgba(255,255,255,0.06);padding:2.5rem 1.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#4b5563;" role="contentinfo"><div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem;"><a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;"><div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:0.75rem;">S</div><span style="color:#f1f0f7;font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;">ShanuFx</span></a><div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Home</a><a href="/showcase" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Showcase</a><a href="https://github.com/ShanudhaTirosh" target="_blank" rel="noopener" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">GitHub</a></div><p style="margin:0;">© 2026 <span style="color:#7c3aed;">Shanudha Tirosh</span> (ShanuFx)</p></div></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="/" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="/showcase" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Showcase</a>
+    </div>
+    <script>
+        loadHeader('../');
+        loadFooter('../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+    </script>
+
+    <!-- ===== BACK TO SHOWCASE BUTTON ===== -->
+    <a href="/showcase" id="back-to-showcase"
+       style="
+           position:fixed;
+           bottom:1.75rem;
+           right:1.75rem;
+           z-index:9999;
+           display:inline-flex;
+           align-items:center;
+           gap:0.5rem;
+           padding:0.65rem 1.25rem;
+           border-radius:50px;
+           background:linear-gradient(135deg,#7c3aed,#06b6d4);
+           color:#fff;
+           font-family:'JetBrains Mono',monospace;
+           font-size:0.75rem;
+           font-weight:700;
+           letter-spacing:0.04em;
+           text-decoration:none;
+           box-shadow:0 4px 24px rgba(124,58,237,0.45);
+           transition:transform 0.2s,box-shadow 0.2s;
+       "
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(124,58,237,0.6)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(124,58,237,0.45)'"
+       aria-label="Back to ShanuFx Showcase">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Showcase
+    </a>
+    <!-- ===== BRANDING CONSOLE LOG ===== -->
+    <script>
+    (function() {
+        function logBranding() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    console.clear();
+                    console.log(
+                        "%cShanuFx",
+                        "color: #7c3aed; font-size: 50px; font-weight: bold; font-family: sans-serif; text-shadow: 3px 3px 0px rgba(124, 58, 237, 0.2);"
+                    );
+                    console.log(
+                        "%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh",
+                        "color: #f59e0b; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                    console.log(
+                        %c🌐 Is that your IP: ,
+                        "color: #06b6d4; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                })
+                .catch(() => {
+                    console.log("%cShanuFx", "color: #7c3aed; font-size: 50px; font-weight: bold;");
+                    console.log("%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh", "color: #f59e0b; font-size: 14px; font-weight: bold;");
+                });
+        }
+        logBranding();
+        setInterval(logBranding, 30000);
+    })();
+    </script>
+</body>
+</html>
