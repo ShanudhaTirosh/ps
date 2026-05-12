@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - Shanudha Tirosh (ShanuFx)</title>
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script> <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            /* Background and text color are handled by Tailwind classes on body */
+            line-height: 1.6;
+        }
+
+         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
+ .text-gradient {
+ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
+-webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-clip: text;
+ text-fill-color: transparent;
+ }
+        .section-divider {
+ height: 2px;
+ background: linear-gradient(90deg, #ff416c, #ff4b2b);
+ width: 80px;
+ margin: 1rem auto 2rem auto; /* Centered divider */
+ }
+
+        /* Optional: Custom styles if needed */
+        *, *::before, *::after {
+             box-sizing: border-box;
+        }
+
+
+    </style>
+
+    <!-- ===== BRANDING & SEO ===== -->
+    <meta name="description" content="A premium utility tool developed by Shanudha Tirosh (ShanuFx). Explore more high-performance tools on the official portfolio." />
+    <meta name="keywords" content="Shanudha Tirosh, ShanuFx, HTML Utility, Web Tool, Full-stack Engineering, Sri Lanka Tech" />
+    <meta name="author" content="Shanudha Tirosh" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#04040a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ShanuFx Innovations" />
+    <meta property="og:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ShanuFx" />
+    <meta name="twitter:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta property="og:title" content="QR Code Generator | ShanuFx" />
+    <meta property="og:description" content="QR Code Generator — a premium utility by Shanudha Tirosh (ShanuFx). Part of the ShanuFx Innovations portfolio." />
+    <meta property="og:url" content="https://shanudhatirosh.github.io/projects_sub/qr-generator" />
+    <meta name="twitter:title" content="QR Code Generator | ShanuFx" />
+    <meta name="twitter:description" content="QR Code Generator — built by Shanudha Tirosh. Explore the full portfolio at ShanuFx Innovations." />
+</head>
+<body class="bg-darkbg text-lighttext">
+
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main class="py-16 pt-28 flex justify-center items-center min-h-screen"> <section id="qrcode-generator-project" class="container mx-auto px-6 max-w-6xl flex justify-center items-center">
+            <div class="w-full max-w-sm" data-aos="zoom-in" data-aos-delay="200"> <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2" data-aos="fade-up">QR Code Generator</h2> <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-center text-gray-400 mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="150">Generate QR codes for text or URLs.</p>
+
+                <div class="generator-container bg-cardbg rounded-lg shadow-xl border border-primary/20 p-6 text-center"> <div class="input-group mb-6">
+                         <label for="qrTextInput" class="block mb-2 text-lighttext font-medium text-left">Enter Text or URL:</label> <input type="text" id="qrTextInput" placeholder="e.g., Your Website URL or some text"
+                                class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary placeholder-gray-500">
+                    </div>
+
+                     <button id="generateQrBtn" class="bg-primary hover:bg-secondary text-white font-semibold py-2 px-6 rounded-md cursor-pointer transition duration-300 flex items-center justify-center mx-auto mb-6"> <i class="fas fa-qrcode mr-2"></i> Generate QR Code
+                     </button>
+
+                     <div id="qrcode" class="w-48 h-48 mx-auto p-2 bg-white rounded-md flex items-center justify-center"> <p class="text-gray-500 text-sm">Enter text/URL above.</p> 
+                     </div>
+
+                     <div id="qrError" class="text-primary text-center mt-4 text-sm font-medium hidden"></div> <div id="qrActionButtons" class="action-buttons mt-6 flex flex-wrap justify-center gap-4 hidden">
+                         <button id="downloadQrBtn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md cursor-pointer transition duration-300 flex items-center text-sm">
+                             <i class="fas fa-download mr-2"></i> Download QR Code
+                         </button>
+                          
+                         <button id="shareQrBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md cursor-pointer transition duration-300 flex items-center text-sm">
+                             <i class="fas fa-share-alt mr-2"></i> Share QR Code
+                         </button>
+                     </div>
+
+
+                </div>
+            </div>
+         </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+             duration: 800, // Shorter duration for faster feel
+ once: false, // Allow animation on scroll up/down
+ offset: 50, // Trigger animations slightly sooner
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Note: Typing effect script from index.html is not needed here.
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const qrTextInput = document.getElementById('qrTextInput');
+            const generateQrBtn = document.getElementById('generateQrBtn');
+            const qrcodeDiv = document.getElementById('qrcode'); // The div where the QR code will be generated
+            const qrErrorDiv = document.getElementById('qrError'); // Error display div
+            const qrActionButtonsDiv = document.getElementById('qrActionButtons'); // Container for action buttons
+            const downloadQrBtn = document.getElementById('downloadQrBtn'); // Download button
+            const shareQrBtn = document.getElementById('shareQrBtn'); // Share button
+
+
+            // Event Listeners
+            generateQrBtn.addEventListener('click', generateQRCode);
+            qrTextInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    generateQRCode();
+                }
+            });
+            downloadQrBtn.addEventListener('click', downloadQRCode);
+            shareQrBtn.addEventListener('click', shareQRCode);
+
+
+            // --- Functions ---
+
+            // Function to generate the QR Code
+            function generateQRCode() {
+                qrErrorDiv.classList.add('hidden'); // Hide any previous errors
+                qrErrorDiv.textContent = ''; // Clear error text
+                qrActionButtonsDiv.classList.add('hidden'); // Hide action buttons initially
+
+                const textToEncode = qrTextInput.value.trim();
+
+                if (!textToEncode) {
+                    qrErrorDiv.textContent = 'Please enter text or a URL.';
+                    qrErrorDiv.classList.remove('hidden');
+                     qrcodeDiv.innerHTML = '<p class="text-gray-500 text-sm">Enter text/URL above.</p>'; // Show initial message
+                    return;
+                }
+
+                // Clear previous QR Code
+                qrcodeDiv.innerHTML = ''; // Remove any existing QR code elements (img or canvas)
+
+                // Generate new QR Code using the library
+                // The library will draw the QR code inside the specified div
+                new QRCode(qrcodeDiv, {
+                    text: textToEncode,
+                    width: 192, // Match the w-48 (48*4 = 192px)
+                    height: 192, // Match the h-48
+                    colorDark : "#e0e0e0", // QR Code color (lighttext)
+                    colorLight : "#2a2a2a", // Background color (cardbg)
+                    correctLevel : QRCode.CorrectLevel.H // Error correction level (High)
+                });
+
+                // Show action buttons after a short delay to allow QR code to render
+                // (The library might take a moment to draw the QR code)
+                setTimeout(() => {
+                    // Check if QR code element (canvas or img) is actually present
+                    if (qrcodeDiv.querySelector('canvas') || qrcodeDiv.querySelector('img')) {
+                        qrActionButtonsDiv.classList.remove('hidden');
+                         // Check if Web Share API is supported for sharing button visibility
+                         if (!navigator.share) {
+                              shareQrBtn.classList.add('hidden');
+                         } else {
+                              shareQrBtn.classList.remove('hidden');
+                         }
+                    } else {
+                        // Handle cases where QR code generation might have failed unexpectedly
+                        qrErrorDiv.textContent = 'Could not generate QR code.';
+                        qrErrorDiv.classList.remove('hidden');
+                         qrcodeDiv.innerHTML = '<p class="text-gray-500 text-sm">Enter text/URL above.</p>'; // Show initial message
+                    }
+                }, 100); // Small delay
+            }
+
+             // Optional: Clear the QR code display and hide buttons if the input is cleared
+             qrTextInput.addEventListener('input', function() {
+                  if (qrTextInput.value.trim() === '') {
+                      qrcodeDiv.innerHTML = '<p class="text-gray-500 text-sm">Enter text/URL above.</p>'; // Show initial message
+                      qrErrorDiv.classList.add('hidden'); // Hide error
+                      qrErrorDiv.textContent = '';
+                      qrActionButtonsDiv.classList.add('hidden'); // Hide action buttons
+                  }
+             });
+
+
+            // Function to download the generated QR Code
+            function downloadQRCode() {
+                const qrCodeElement = qrcodeDiv.querySelector('canvas') || qrcodeDiv.querySelector('img'); // Get the rendered element
+
+                if (!qrCodeElement) {
+                    alert("Please generate a QR Code first.");
+                    return;
+                }
+
+                let imageUrl = '';
+                if (qrCodeElement.tagName === 'CANVAS') {
+                    imageUrl = qrCodeElement.toDataURL('image/png'); // Get data URL from canvas
+                } else if (qrCodeElement.tagName === 'IMG') {
+                    imageUrl = qrCodeElement.src; // Get data URL from img
+                } else {
+                     alert("Could not get QR Code image data.");
+                     return;
+                }
+
+
+                // Create a temporary link element
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                link.download = 'qrcode.png'; // Set the download filename
+                document.body.appendChild(link); // Append to body (needed for Firefox)
+                link.click(); // Programmatically click the link to trigger download
+                document.body.removeChild(link); // Clean up the temporary link
+            }
+
+
+             // Function to share the generated QR Code (using Web Share API if available)
+             async function shareQRCode() {
+                 const qrCodeElement = qrcodeDiv.querySelector('canvas') || qrcodeDiv.querySelector('img');
+
+                 if (!qrCodeElement) {
+                     alert("Please generate a QR Code first.");
+                     return;
+                 }
+
+                 if (!navigator.share) {
+                     alert('Web Share API is not supported on your device.');
+                      // Fallback: Optionally copy the text/URL to clipboard instead
+                     const textToEncode = qrTextInput.value.trim();
+                     if (textToEncode) {
+                          navigator.clipboard.writeText(textToEncode).then(() => {
+                               alert('Text/URL copied to clipboard!');
+                          }).catch(err => {
+                               console.error('Copy failed:', err);
+                               alert('Could not copy text/URL to clipboard.');
+                          });
+                     }
+                     return;
+                 }
+
+                 let imageUrl = '';
+                 if (qrCodeElement.tagName === 'CANVAS') {
+                    imageUrl = qrCodeElement.toDataURL('image/png');
+                 } else if (qrCodeElement.tagName === 'IMG') {
+                    imageUrl = qrCodeElement.src;
+                 } else {
+                     alert("Could not get QR Code image data for sharing.");
+                     return;
+                 }
+
+                 // Convert data URL to a Blob to share as a file
+                 try {
+                     const response = await fetch(imageUrl);
+                     const blob = await response.blob();
+                     const file = new File([blob], 'qrcode.png', { type: 'image/png' });
+
+                     // Use the Web Share API to share the file
+                     await navigator.share({
+                         files: [file],
+                         title: 'My QR Code',
+                         text: 'Check out this QR code I generated!',
+                         // url: document.location.href // Optional: Share the page URL
+                     });
+                     console.log('QR Code shared successfully!');
+
+                 } catch (error) {
+                     console.error('Error sharing QR Code:', error);
+                      // Handle user cancelling share or other errors
+                     if (error.name !== 'AbortError') { // AbortError is when user cancels
+                          alert('Failed to share QR Code.');
+                     }
+                 }
+             }
+
+             // Check if Web Share API is supported on load and hide button if not
+             if (!navigator.share) {
+                 shareQrBtn.classList.add('hidden');
+             }
+
+
+        });
+    </script>
+    <footer id="main-footer" style="background:#04040a;border-top:1px solid rgba(255,255,255,0.06);padding:2.5rem 1.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#4b5563;" role="contentinfo"><div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem;"><a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;"><div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:0.75rem;">S</div><span style="color:#f1f0f7;font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;">ShanuFx</span></a><div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Home</a><a href="/showcase" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Showcase</a><a href="https://github.com/ShanudhaTirosh" target="_blank" rel="noopener" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">GitHub</a></div><p style="margin:0;">© 2026 <span style="color:#7c3aed;">Shanudha Tirosh</span> (ShanuFx)</p></div></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="/" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="/showcase" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Showcase</a>
+    </div>
+    <script>
+        loadHeader('../');
+        loadFooter('../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+    </script>
+
+    <!-- ===== BACK TO SHOWCASE BUTTON ===== -->
+    <a href="/showcase" id="back-to-showcase"
+       style="
+           position:fixed;
+           bottom:1.75rem;
+           right:1.75rem;
+           z-index:9999;
+           display:inline-flex;
+           align-items:center;
+           gap:0.5rem;
+           padding:0.65rem 1.25rem;
+           border-radius:50px;
+           background:linear-gradient(135deg,#7c3aed,#06b6d4);
+           color:#fff;
+           font-family:'JetBrains Mono',monospace;
+           font-size:0.75rem;
+           font-weight:700;
+           letter-spacing:0.04em;
+           text-decoration:none;
+           box-shadow:0 4px 24px rgba(124,58,237,0.45);
+           transition:transform 0.2s,box-shadow 0.2s;
+       "
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(124,58,237,0.6)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(124,58,237,0.45)'"
+       aria-label="Back to ShanuFx Showcase">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Showcase
+    </a>
+    <!-- ===== BRANDING CONSOLE LOG ===== -->
+    <script>
+    (function() {
+        function logBranding() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    console.clear();
+                    console.log(
+                        "%cShanuFx",
+                        "color: #7c3aed; font-size: 50px; font-weight: bold; font-family: sans-serif; text-shadow: 3px 3px 0px rgba(124, 58, 237, 0.2);"
+                    );
+                    console.log(
+                        "%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh",
+                        "color: #f59e0b; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                    console.log(
+                        %c🌐 Is that your IP: ,
+                        "color: #06b6d4; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                })
+                .catch(() => {
+                    console.log("%cShanuFx", "color: #7c3aed; font-size: 50px; font-weight: bold;");
+                    console.log("%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh", "color: #f59e0b; font-size: 14px; font-weight: bold;");
+                });
+        }
+        logBranding();
+        setInterval(logBranding, 30000);
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator - Shanudha Tirosh (ShanuFx)</title>
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            /* Background and text color are handled by Tailwind classes on body */
+            line-height: 1.6;
+        }
+
+         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
+ .text-gradient {
+background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
+-webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+background-clip: text;
+ text-fill-color: transparent;
+ }
+        .section-divider {
+ height: 2px;
+ background: linear-gradient(90deg, #ff416c, #ff4b2b);
+ width: 80px;
+ margin: 1rem auto 2rem auto; /* Centered divider */
+ }
+
+        /* --- Calculator Specific Styles (from your styles.css, adapted for dark theme) --- */
+        :root {
+            --primary-color-calc: #d63031; /* Using primary theme color for calc accents */
+            --secondary-color-calc: #ff4b2b; /* Using secondary theme color for calc accents */
+            --background-color-calc: #2a2a2a; /* Using card background color for calc body */
+            --text-color-calc: #e0e0e0; /* Using light text color for general text */
+            --button-hover-calc: #3a3a3a; /* Darker hover for dark buttons */
+            --button-bg-dark: #3a3a3a; /* Dark button background */
+            --button-bg-light: #4a4a4a; /* Slightly lighter button background */
+            --display-bg-dark: #1a1a1a; /* Darkest background for display */
+        }
+
+        /* Removed body styling as it's handled by Tailwind */
+
+        .calculator-container {
+            perspective: 1000px; /* Keep the 3D perspective effect */
+             /* Added max-width for responsiveness */
+             max-width: 380px; /* Increased width slightly */
+             margin: 0 auto; /* Center the container */
+        }
+
+        .calculator {
+            width: 100%; /* Make it fill the container */
+            background-color: var(--background-color-calc); /* Use dark theme background */
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* Darker shadow */
+            padding: 20px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 75, 43, 0.3); /* Add a subtle border */
+        }
+
+        .calculator:hover {
+            transform: rotateY(5deg); /* Keep the hover effect */
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color-calc); /* Use primary theme color */
+            font-size: 1.8rem; /* Adjusted size */
+            font-weight: 700; /* Bold font */
+        }
+
+        .display-container {
+            margin-bottom: 20px;
+        }
+
+        .expression-display, .result-display {
+            width: 100%;
+            border: none;
+            background-color: var(--display-bg-dark); /* Dark display background */
+            color: var(--text-color-calc); /* Light text */
+            text-align: right;
+            padding: 15px; /* Increased padding */
+            font-size: 1.3rem; /* Adjusted size */
+            border-radius: 8px; /* More rounded corners */
+            margin-bottom: 10px;
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for digits */
+        }
+
+        .result-display {
+            font-size: 2rem; /* Larger result font */
+            font-weight: bold;
+            color: var(--secondary-color-calc); /* Use secondary theme color */
+        }
+
+        .mode-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .mode-btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-color-calc); /* Use primary theme color */
+            color: var(--primary-color-calc); /* Use primary theme color */
+            padding: 8px 20px; /* Adjusted padding */
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 20px; /* Pill shape */
+            font-weight: 600; /* Semi-bold */
+        }
+
+        .mode-btn.active {
+            background-color: var(--primary-color-calc); /* Use primary theme color */
+            color: white;
+        }
+         .mode-btn:hover:not(.active) {
+              background-color: rgba(214, 48, 49, 0.1); /* Light background on hover for inactive */
+         }
+
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: var(--button-bg-dark); /* Dark button background */
+            color: var(--text-color-calc); /* Light text color */
+            border: none;
+            border-radius: 8px; /* More rounded */
+            padding: 15px; /* Increased padding */
+            font-size: 1.2rem; /* Adjusted size */
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            outline: none;
+            font-weight: 600; /* Semi-bold */
+        }
+
+        .number {
+            background-color: var(--button-bg-dark); /* Consistent dark background */
+        }
+
+        .operator {
+            background-color: var(--button-bg-light); /* Slightly lighter background */
+            color: var(--secondary-color-calc); /* Use secondary theme color for operators */
+            font-size: 1.5rem; /* Larger operator font */
+        }
+         .function, .decimal, .parenthesis {
+            background-color: var(--button-bg-light); /* Slightly lighter background */
+            color: var(--primary-color-calc); /* Use primary theme color for functions/special */
+            font-size: 1.1rem; /* Adjusted font size for text functions */
+         }
+
+
+        .clear, .delete {
+            background-color: #e74c3c; /* Reddish background */
+            color: white;
+        }
+
+        .calculate {
+            background-color: var(--secondary-color-calc); /* Use secondary theme color */
+            color: white;
+             grid-column: span 2; /* Make calculate button wider */
+             font-size: 1.5rem; /* Larger font */
+        }
+
+        button:hover {
+            opacity: 0.9; /* Slightly less opaque on hover */
+             background-color: var(--button-hover-calc); /* Darker hover background */
+        }
+         .clear:hover, .delete:hover {
+              background-color: #c0392b; /* Darker red hover */
+         }
+          .calculate:hover {
+              background-color: #e67e22; /* Darker secondary hover */
+          }
+
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Adjust grid for wider calculate button */
+            gap: 10px;
+        }
+
+        .delete i {
+            font-size: 1.3rem; /* Adjusted icon size */
+        }
+         /* Specific styling for the delete button */
+         button.delete {
+             grid-column: span 1; /* Ensure delete button stays in its column */
+         }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            .calculator-container {
+                padding: 0 10px; /* Reduce horizontal padding on very small screens */
+            }
+            .calculator {
+                padding: 15px; /* Reduce calculator padding */
+            }
+            .expression-display, .result-display {
+                 padding: 10px; /* Reduce display padding */
+                 font-size: 1.1rem;
+            }
+             .result-display {
+                 font-size: 1.8rem;
+             }
+            button {
+                padding: 10px; /* Reduce button padding */
+                font-size: 1rem;
+            }
+             .operator, .calculate {
+                 font-size: 1.3rem;
+             }
+             .function, .decimal, .parenthesis {
+                 font-size: 1rem;
+             }
+             .mode-btn {
+                 padding: 6px 15px;
+                 font-size: 0.9rem;
+             }
+             .delete i {
+                 font-size: 1.1rem;
+             }
+        }
+
+
+    </style>
+
+    <!-- ===== BRANDING & SEO ===== -->
+    <meta name="description" content="A premium utility tool developed by Shanudha Tirosh (ShanuFx). Explore more high-performance tools on the official portfolio." />
+    <meta name="keywords" content="Shanudha Tirosh, ShanuFx, HTML Utility, Web Tool, Full-stack Engineering, Sri Lanka Tech" />
+    <meta name="author" content="Shanudha Tirosh" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#04040a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ShanuFx Innovations" />
+    <meta property="og:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ShanuFx" />
+    <meta name="twitter:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta property="og:title" content="Scientific Calculator | ShanuFx" />
+    <meta property="og:description" content="Scientific Calculator — a premium utility by Shanudha Tirosh (ShanuFx). Part of the ShanuFx Innovations portfolio." />
+    <meta property="og:url" content="https://shanudhatirosh.github.io/projects_sub/calculator" />
+    <meta name="twitter:title" content="Scientific Calculator | ShanuFx" />
+    <meta name="twitter:description" content="Scientific Calculator — built by Shanudha Tirosh. Explore the full portfolio at ShanuFx Innovations." />
+</head>
+<body class="bg-darkbg text-lighttext">
+
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main class="py-16 pt-28"> <section id="calculator-project" class="container mx-auto px-6 max-w-6xl flex justify-center items-center">
+            <div class="w-full"> <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2" data-aos="fade-up">Scientific Calculator</h2>
+                <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="150">A web-based scientific calculator with standard and advanced functions.</p>
+
+                <div class="calculator-container" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="calculator">
+                        <div class="calculator-header">
+                            <h1>Calculator</h1> </div>
+                        <div class="display-container">
+                            <input type="text" id="expression" class="expression-display" readonly placeholder="Expression">
+                            <input type="text" id="result" class="result-display" readonly placeholder="Result">
+                        </div>
+                        <div class="mode-toggle">
+                            <button id="standard-mode" class="mode-btn active">Standard</button>
+                            <button id="scientific-mode" class="mode-btn">Scientific</button>
+                        </div>
+                        <div class="buttons standard-buttons">
+                            <button class="number" data-value="7">7</button>
+                            <button class="number" data-value="8">8</button>
+                            <button class="number" data-value="9">9</button>
+                            <button class="operator" data-value="/">&divide;</button>
+
+                            <button class="number" data-value="4">4</button>
+                            <button class="number" data-value="5">5</button>
+                            <button class="number" data-value="6">6</button>
+                            <button class="operator" data-value="*">&times;</button>
+
+                            <button class="number" data-value="1">1</button>
+                            <button class="number" data-value="2">2</button>
+                            <button class="number" data-value="3">3</button>
+                            <button class="operator" data-value="-">-</button>
+
+                            <button class="number" data-value="0">0</button>
+                            <button class="decimal" data-value=".">.</button>
+                            <button class="clear">C</button>
+                            <button class="operator" data-value="+">+</button>
+                        </div>
+                        <div class="buttons scientific-buttons" style="display: none;">
+                            <button class="function" data-value="sin">sin</button>
+                            <button class="function" data-value="cos">cos</button>
+                            <button class="function" data-value="tan">tan</button>
+                            <button class="function" data-value="log">log</button>
+
+                            <button class="function" data-value="asin">asin</button>
+                            <button class="function" data-value="acos">acos</button>
+                            <button class="function" data-value="atan">atan</button>
+                            <button class="function" data-value="ln">ln</button>
+
+                            <button class="function" data-value="sqrt">v</button>
+                            <button class="function" data-value="**2">x�</button> <button class="function" data-value="cbrt">?</button>
+                            <button class="function" data-value="Math.PI">p</button> <button class="function" data-value="Math.exp">exp</button> <button class="function" data-value="Math.abs">|x|</button> <button class="parenthesis" data-value="(">(</button>
+                            <button class="parenthesis" data-value=")">)</button>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="delete"><i class="fas fa-backspace"></i></button>
+                            <button class="calculate">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+             duration: 800, // Shorter duration for faster feel
+once: false, // Allow animation on scroll up/down
+ offset: 50, // Trigger animations slightly sooner
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Note: Typing effect script from index.html is not needed here.
+    </script>
+
+    <script>
+        class ScientificCalculator {
+            constructor() {
+                this.expressionDisplay = document.getElementById('expression');
+                this.resultDisplay = document.getElementById('result');
+                this.standardButtons = document.querySelector('.standard-buttons');
+                this.scientificButtons = document.querySelector('.scientific-buttons');
+                this.modeButtons = document.querySelectorAll('.mode-btn');
+                // Select all calculator buttons within the calculator container
+                this.calculatorButtons = document.querySelectorAll('.calculator .buttons button, .calculator .action-buttons button');
+
+
+                this.initEventListeners();
+                this.toggleMode('standard-mode'); // Start in standard mode
+            }
+
+            initEventListeners() {
+                // Mode Toggle
+                this.modeButtons.forEach(btn => {
+                    btn.addEventListener('click', () => this.toggleMode(btn.id));
+                });
+
+                // Number, Operator, Function, Special Buttons
+                this.calculatorButtons.forEach(button => {
+                     // Add event listener to all calculator buttons with a data-value
+                    if (button.dataset.value !== undefined) {
+                        button.addEventListener('click', () => this.handleInput(button.dataset.value));
+                    }
+                });
+
+                // Special Buttons (Clear, Delete, Calculate) - These are already handled by the general loop above if they have data-value,
+                // but explicit listeners are also fine and might be needed if they don't have data-value or have specific actions.
+                 // Let's refine this - the original had specific listeners for clear, delete, calculate.
+                 document.querySelector('.clear').removeEventListener('click', () => this.clear()); // Remove if previously added
+                 document.querySelector('.delete').removeEventListener('click', () => this.delete()); // Remove if previously added
+                 document.querySelector('.calculate').removeEventListener('click', () => this.calculate()); // Remove if previously added
+
+                document.querySelector('.clear').addEventListener('click', () => this.clear());
+                document.querySelector('.delete').addEventListener('click', () => this.delete());
+                document.querySelector('.calculate').addEventListener('click', () => this.calculate());
+            }
+
+            toggleMode(mode) {
+                this.modeButtons.forEach(btn => btn.classList.remove('active'));
+                document.getElementById(mode).classList.add('active');
+
+                if (mode === 'standard-mode') {
+                    this.standardButtons.style.display = 'grid';
+                    this.scientificButtons.style.display = 'none';
+                } else { // scientific-mode
+                    this.standardButtons.style.display = 'none';
+                    this.scientificButtons.style.display = 'grid';
+                }
+            }
+
+            handleInput(value) {
+                 // Add spacing around operators for readability in expression display
+                 const operators = ['+', '-', '*', '/', '**2']; // Include square for spacing
+                 const lastChar = this.expressionDisplay.value.slice(-1);
+
+                 if (operators.includes(value) && this.expressionDisplay.value !== '' && !operators.includes(lastChar)) {
+                     this.expressionDisplay.value += ` ${value} `; // Add spaces around operator
+                 } else if (['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'cbrt', 'Math.abs', 'Math.exp'].includes(value)) {
+                     this.expressionDisplay.value += `${value}(`; // Add opening parenthesis for functions
+                 } else if (value === 'Math.PI') {
+                     this.expressionDisplay.value += 'p'; // Display pi symbol
+                 }
+                 else {
+                     this.expressionDisplay.value += value;
+                 }
+
+                 this.resultDisplay.value = ''; // Clear result when typing new expression
+            }
+
+            clear() {
+                this.expressionDisplay.value = '';
+                this.resultDisplay.value = '';
+            }
+
+            delete() {
+                // Remove the last character, handle potential spaces around operators
+                const currentValue = this.expressionDisplay.value;
+                 if (currentValue.endsWith(' ')) { // If ends with space (from operator spacing)
+                     this.expressionDisplay.value = currentValue.slice(0, -3); // Remove space + operator + space
+                 } else if (currentValue.endsWith('(')) { // If ends with function parenthesis
+                      // Find the start of the function name (e.g., "sin(")
+                      const functionStart = currentValue.lastIndexOf('(') - 3; // Approx index for 3-letter functions
+                      if (functionStart >= 0 && ['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'cbrt', 'abs', 'exp'].some(func => currentValue.slice(functionStart, functionStart + func.length) === func)) {
+                           this.expressionDisplay.value = currentValue.slice(0, functionStart); // Remove function name and parenthesis
+                      } else {
+                           this.expressionDisplay.value = currentValue.slice(0, -1); // Just remove parenthesis
+                      }
+                 }
+                 else {
+                    this.expressionDisplay.value = currentValue.slice(0, -1);
+                }
+                 this.resultDisplay.value = ''; // Clear result when deleting
+            }
+
+
+            calculate() {
+                try {
+                    let expression = this.expressionDisplay.value;
+
+                    // Replace symbols and common math function names with Math equivalents for eval()
+                    expression = expression
+                        .replace(/&divide;/g, '/')
+                        .replace(/&times;/g, '*')
+                         .replace(/p/g, 'Math.PI') // Replace pi symbol
+                         .replace(/v/g, 'Math.sqrt') // Replace sqrt symbol
+                         .replace(/?/g, 'Math.cbrt'); // Replace cbrt symbol
+
+
+                    // Note: Using eval() can be risky with unsanitized user input in production web apps.
+                    // For a client-side personal project from a trusted source, the risk is lower,
+                    // but for a real application, a safer math expression parser is recommended.
+                    const result = eval(expression);
+
+                    if (isNaN(result) || !isFinite(result)) {
+                         this.resultDisplay.value = 'Invalid';
+                    } else {
+                         this.resultDisplay.value = result.toFixed(8).replace(/\.?0+$/, ''); // ToFixed and remove trailing zeros
+                    }
+
+                } catch (error) {
+                    this.resultDisplay.value = 'Error';
+                    console.error("Calculation Error:", error);
+                }
+            }
+        }
+
+        // Initialize the calculator
+        document.addEventListener('DOMContentLoaded', () => {
+            new ScientificCalculator();
+        });
+    </script>
+    <footer id="main-footer" style="background:#04040a;border-top:1px solid rgba(255,255,255,0.06);padding:2.5rem 1.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#4b5563;" role="contentinfo"><div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem;"><a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;"><div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:0.75rem;">S</div><span style="color:#f1f0f7;font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;">ShanuFx</span></a><div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Home</a><a href="/showcase" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Showcase</a><a href="https://github.com/ShanudhaTirosh" target="_blank" rel="noopener" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">GitHub</a></div><p style="margin:0;">© 2026 <span style="color:#7c3aed;">Shanudha Tirosh</span> (ShanuFx)</p></div></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="/" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="/showcase" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Showcase</a>
+    </div>
+    <script>
+        loadHeader('../');
+        loadFooter('../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+    </script>
+
+    <!-- ===== BACK TO SHOWCASE BUTTON ===== -->
+    <a href="/showcase" id="back-to-showcase"
+       style="
+           position:fixed;
+           bottom:1.75rem;
+           right:1.75rem;
+           z-index:9999;
+           display:inline-flex;
+           align-items:center;
+           gap:0.5rem;
+           padding:0.65rem 1.25rem;
+           border-radius:50px;
+           background:linear-gradient(135deg,#7c3aed,#06b6d4);
+           color:#fff;
+           font-family:'JetBrains Mono',monospace;
+           font-size:0.75rem;
+           font-weight:700;
+           letter-spacing:0.04em;
+           text-decoration:none;
+           box-shadow:0 4px 24px rgba(124,58,237,0.45);
+           transition:transform 0.2s,box-shadow 0.2s;
+       "
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(124,58,237,0.6)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(124,58,237,0.45)'"
+       aria-label="Back to ShanuFx Showcase">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Showcase
+    </a>
+    <!-- ===== BRANDING CONSOLE LOG ===== -->
+    <script>
+    (function() {
+        function logBranding() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    console.clear();
+                    console.log(
+                        "%cShanuFx",
+                        "color: #7c3aed; font-size: 50px; font-weight: bold; font-family: sans-serif; text-shadow: 3px 3px 0px rgba(124, 58, 237, 0.2);"
+                    );
+                    console.log(
+                        "%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh",
+                        "color: #f59e0b; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                    console.log(
+                        %c🌐 Is that your IP: ,
+                        "color: #06b6d4; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                })
+                .catch(() => {
+                    console.log("%cShanuFx", "color: #7c3aed; font-size: 50px; font-weight: bold;");
+                    console.log("%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh", "color: #f59e0b; font-size: 14px; font-weight: bold;");
+                });
+        }
+        logBranding();
+        setInterval(logBranding, 30000);
+    })();
+    </script>
+</body>
+</html>
