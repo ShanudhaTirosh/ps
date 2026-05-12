@@ -353,7 +353,7 @@ export default function Home() {
               <p style={{ color: '#94a3b8', maxWidth: 600, margin: '0 auto 2rem', lineHeight: 1.7 }}>
                 From system-level Android optimization to intelligent automation frameworks.
               </p>
-              <a href="#/showcase" className="btn-outline" style={{ padding: '0.65rem 1.5rem', fontSize: '0.82rem' }}>
+              <a href="/showcase" className="btn-outline" style={{ padding: '0.65rem 1.5rem', fontSize: '0.82rem' }}>
                 VIEW PREMIUM SHOWCASE <i className="fas fa-external-link-alt" style={{ marginLeft: '0.4rem' }} />
               </a>
             </motion.div>
@@ -404,7 +404,7 @@ export default function Home() {
             <p style={{ color: '#94a3b8', marginBottom: '2rem', lineHeight: 1.7 }}>
               Explore my portfolio of projects — from web apps and mobile tools to creative designs.
             </p>
-            <a href="#/showcase" className="btn-primary" style={{ fontSize: '1rem', padding: '0.85rem 2.5rem' }}>
+            <a href="/showcase" className="btn-primary" style={{ fontSize: '1rem', padding: '0.85rem 2.5rem' }}>
               Explore the Premium Showcase <i className="fas fa-arrow-right" />
             </a>
           </div>
