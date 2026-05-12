@@ -5,7 +5,7 @@ export default function Footer() {
 
   const socials = [
     { icon: 'fab fa-github',      href: 'https://github.com/ShanudhaTirosh',             label: 'GitHub' },
-    { icon: 'fab fa-linkedin-in', href: 'https://lk.linkedin.com/in/shanudha-tirosh-93454b305', label: 'LinkedIn' },
+    { icon: 'fab fa-linkedin-in', href: 'https://www.linkedin.com/in/shanudhatirosh/', label: 'LinkedIn' },
     { icon: 'fab fa-facebook',    href: 'https://web.facebook.com/tirosh.shanudha/',      label: 'Facebook' },
     { icon: 'fab fa-instagram',   href: 'https://www.instagram.com/shanudha_tirosh/',     label: 'Instagram' },
   ];
