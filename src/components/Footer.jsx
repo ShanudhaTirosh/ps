@@ -26,9 +26,8 @@ export default function Footer() {
           }}>ShanuFx</Link>
         </div>
 
-        {/* Quick links */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-          {[['Home','/#home'],['About','/#about'],['Innovations','/#innovations'],['Showcase','/showcase'],['Contact','/#contact']].map(([label, href]) => (
+          {[['Home','#/'],['About','#about'],['Innovations','#innovations'],['Showcase','#/showcase'],['Contact','#contact']].map(([label, href]) => (
             <a key={label} href={href} style={{ fontSize: '0.82rem', color: '#4b5563', textDecoration: 'none', transition: 'color 0.2s' }}
               onMouseOver={e=>e.target.style.color='#94a3b8'} onMouseOut={e=>e.target.style.color='#4b5563'}>
               {label}

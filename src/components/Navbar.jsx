@@ -21,11 +21,11 @@ export default function Navbar() {
   useEffect(() => { setMobile(false); }, [location]);
 
   const navLinks = [
-    { label: 'Home',       href: '/#home' },
-    { label: 'About',      href: '/#about' },
-    { label: 'Innovations',href: '/#innovations' },
-    { label: 'Showcase',   href: '/showcase' },
-    { label: 'Contact',    href: '/#contact' },
+    { label: 'Home',       href: '#/' },
+    { label: 'About',      href: '#/about' },
+    { label: 'Innovations',href: '#/innovations' },
+    { label: 'Showcase',   href: '#/showcase' },
+    { label: 'Contact',    href: '#/contact' },
   ];
 
   return (
