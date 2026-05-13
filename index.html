@@ -1,506 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <!-- ===== DOCUMENT FOUNDATION ===== -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- SEO & Redirect Meta -->
-  <title>ShanuFx — We've Moved!</title>
-  <meta name="robots" content="noindex" />
-  <meta http-equiv="refresh" content="10;url=https://shanu-fx.web.app/" />
-  <link rel="canonical" href="https://shanu-fx.web.app/" />
+    <!-- ===== PERFORMANCE HINTS ===== -->
+    <link rel="preconnect" href="https://shanudhatirosh.github.io" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="dns-prefetch" href="https://github.com" />
+    <link rel="dns-prefetch" href="https://lk.linkedin.com" />
+    <link rel="dns-prefetch" href="https://firebaseio.com" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="ShanuFx — We've Moved!" />
-  <meta property="og:description" content="ShanuFx has officially moved to a new home at shanu-fx.web.app. Please update your bookmarks!" />
-  <meta property="og:url" content="https://shanu-fx.web.app/" />
-  <meta property="og:image" content="https://shanu-fx.web.app/assets/og-image.png" />
-  <meta property="og:image:secure_url" content="https://shanu-fx.web.app/assets/og-image.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="ShanuFx | Shanudha Tirosh — Android System Developer & IoT Engineer" />
-  <meta property="og:type" content="website" />
+    <!-- ===== PRIMARY SEO TAGS ===== -->
+    <title>ShanuFx | Shanudha Tirosh – Android System Developer & Innovation Hub</title>
+    <meta name="description" content="Official portfolio of Shanudha Tirosh (ShanuFx). Specializing in Android System Internals, IoT Automation, and high-performance software engineering. Developer of NovaMesh and SHANU-MD." />
+    <meta name="keywords" content="Shanudha Tirosh, ShanuFx, Android Internals, NovaMesh, SHANU-MD, IoT Developer Sri Lanka, Full-stack Engineering, System Optimization, Sri Lanka Tech, Android Developer, WhatsApp Bot Developer, Firebase Developer, NovaNetX, NexusPOS, IoT Sri Lanka" />
+    <meta name="author" content="Shanudha Tirosh" />
+    <meta name="copyright" content="Shanudha Tirosh" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="https://shanu-fx.web.app/" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ShanuFx — We've Moved!" />
-  <meta name="twitter:description" content="ShanuFx has officially moved to shanu-fx.web.app. Update your bookmarks!" />
-  <meta name="twitter:image" content="https://shanu-fx.web.app/assets/og-image.png" />
+    <!-- ===== BROWSER & PLATFORM SPECIFIC ===== -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ShanuFx" />
+    <meta name="application-name" content="ShanuFx" />
+    <meta name="msapplication-TileColor" content="#04040a" />
+    <meta name="msapplication-config" content="none" />
+    <meta name="theme-color" content="#04040a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 
-  <!-- Bootstrap 5 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
+    <!-- ===== LANGUAGE & INTERNATIONALISATION ===== -->
+    <meta http-equiv="content-language" content="en" />
+    <link rel="alternate" hreflang="en" href="https://shanu-fx.web.app/" />
+    <link rel="alternate" hreflang="x-default" href="https://shanu-fx.web.app/" />
 
-  <style>
-    /* ─── CSS Variables ─── */
-    :root {
-      --navy:    #050918;
-      --deep:    #080d2a;
-      --purple:  #6a0ead;
-      --violet:  #8b2fcf;
-      --cyan:    #00e5ff;
-      --magenta: #ff00cc;
-      --pink:    #f72585;
-      --glass-bg:     rgba(255,255,255,0.04);
-      --glass-border: rgba(0,229,255,0.18);
-      --glass-glow:   rgba(0,229,255,0.08);
-      --text-primary: #e8f4ff;
-      --text-muted:   rgba(200,220,255,0.55);
-    }
+    <!-- ===== GEO TAGS ===== -->
+    <meta name="geo.region" content="LK-11" />
+    <meta name="geo.placename" content="Ambalangoda, Sri Lanka" />
+    <meta name="geo.position" content="6.2341;80.0523" />
+    <meta name="ICBM" content="6.2341, 80.0523" />
 
-    /* ─── Reset & Base ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <!-- ===== ICONS & PWA ===== -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://shanu-fx.web.app/assets/shanufx_logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://shanu-fx.web.app/assets/shanufx_logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://shanu-fx.web.app/assets/shanufx_logo.png" />
+    <link rel="manifest" href="/assets/manifest-DFrGN2E3-DFrGN2E3-DFrGN2E3-DFrGN2E3-DFrGN2E3-DFrGN2E3.json" />
 
-    body {
-      font-family: 'Rajdhani', sans-serif;
-      background: var(--navy);
-      color: var(--text-primary);
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shanu-fx.web.app/" />
+    <meta property="og:site_name" content="ShanuFx Portfolio" />
+    <meta property="og:title" content="ShanuFx | Android & System Developer Portfolio" />
+    <meta property="og:description" content="Revolutionizing mobile networking and system performance. Developer of NovaMesh and IoT strategist from Sri Lanka." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://shanu-fx.web.app/assets/og-image.png" />
+    <meta property="og:image:secure_url" content="https://shanu-fx.web.app/assets/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Shanudha Tirosh — ShanuFx Logo" />
+    <meta property="og:updated_time" content="2026-05-12T00:00:00+05:30" />
 
-    /* ─── Animated Gradient Background ─── */
-    .bg-gradient-mesh {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 15% 20%,  rgba(106,14,173,0.45) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 70% at 85% 10%,  rgba(247,37,133,0.25) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 60% at 75% 80%,  rgba(0,229,255,0.20)  0%, transparent 55%),
-        radial-gradient(ellipse 50% 80% at 10% 85%,  rgba(0,229,255,0.15)  0%, transparent 50%),
-        radial-gradient(ellipse 90% 90% at 50% 50%,  rgba(8,13,42,1)       0%, transparent 100%);
-      animation: meshShift 12s ease-in-out infinite alternate;
-    }
-    @keyframes meshShift {
-      0%   { filter: hue-rotate(0deg)   brightness(1); }
-      50%  { filter: hue-rotate(18deg)  brightness(1.05); }
-      100% { filter: hue-rotate(-12deg) brightness(0.95); }
-    }
+    <!-- ===== TWITTER / X CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ShanuFx" />
+    <meta name="twitter:creator" content="@ShanuFx" />
+    <meta name="twitter:title" content="ShanuFx | Innovation & Mobile Systems" />
+    <meta name="twitter:description" content="Pushing the boundaries of Android System Internals and IoT automation. Developer of NovaMesh & SHANU-MD from Sri Lanka." />
+    <meta name="twitter:image" content="https://shanu-fx.web.app/assets/og-image.png" />
+    <meta name="twitter:image:alt" content="Shanudha Tirosh — ShanuFx Logo" />
 
-    /* scanline overlay */
-    .bg-scanlines {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0,0,0,0.06) 3px,
-        rgba(0,0,0,0.06) 4px
-      );
-      pointer-events: none;
-    }
+    <!-- ===== ADDITIONAL SEO & BROWSER HINTS ===== -->
+    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible" />
+    <meta name="google-site-verification" content="google674d98d6ab0d9910" />
+    <link rel="me" href="mailto:info.shanudhatirosh@gmail.com" />
 
-    /* ─── Floating Orb Particles ─── */
-    .orbs-wrap {
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0;
-      animation: orbFloat linear infinite;
-    }
-    .orb:nth-child(1)  { width:260px;height:260px;background:rgba(106,14,173,0.55);  left:8%;  top:70%; animation-duration:18s; animation-delay:0s;    opacity:.7; }
-    .orb:nth-child(2)  { width:180px;height:180px;background:rgba(0,229,255,0.40);   left:80%; top:15%; animation-duration:22s; animation-delay:-4s;   opacity:.6; }
-    .orb:nth-child(3)  { width:320px;height:320px;background:rgba(247,37,133,0.30);  left:55%; top:60%; animation-duration:26s; animation-delay:-8s;   opacity:.5; }
-    .orb:nth-child(4)  { width:140px;height:140px;background:rgba(0,229,255,0.50);   left:25%; top:20%; animation-duration:20s; animation-delay:-12s;  opacity:.6; }
-    .orb:nth-child(5)  { width:220px;height:220px;background:rgba(139,47,207,0.45);  left:70%; top:80%; animation-duration:24s; animation-delay:-6s;   opacity:.7; }
-    @keyframes orbFloat {
-      0%,100% { transform: translateY(0px)   scale(1);   }
-      33%      { transform: translateY(-40px) scale(1.05);}
-      66%      { transform: translateY(20px)  scale(0.97);}
-    }
+    <!-- ===== EXTENDED META: IDENTITY & CLASSIFICATION ===== -->
+    <meta name="color-scheme" content="dark light" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="375" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="subject" content="Software Engineering Portfolio – Android, IoT, Full-stack" />
+    <meta name="classification" content="Portfolio, Technology, Software Development" />
+    <meta name="category" content="Technology" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="distribution" content="Global" />
+    <meta name="rating" content="General" />
+    <meta name="target" content="all" />
+    <meta name="owner" content="Shanudha Tirosh" />
+    <meta name="url" content="https://shanu-fx.web.app/" />
+    <meta name="identifier-URL" content="https://shanu-fx.web.app/" />
+    <meta name="pagename" content="ShanuFx | Shanudha Tirosh Portfolio" />
+    <meta name="abstract" content="Official portfolio of Shanudha Tirosh (ShanuFx) — builder of NovaMesh, NovaNetX, VaultX, NetPulse, NexusPOS, and more. Android system developer and IoT engineer from Sri Lanka." />
+    <meta name="summary" content="Shanudha Tirosh is a full-stack and Android system developer from Sri Lanka building production-grade apps across mobile, web, and IoT." />
 
-    /* ─── Floating Decorative Glass Cards ─── */
-    .deco-cards-wrap {
-      position: fixed;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .deco-card {
-      position: absolute;
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(0,229,255,0.10);
-      border-radius: 18px;
-      animation: cardDrift ease-in-out infinite alternate;
-    }
-    .deco-card:nth-child(1) { width:200px;height:120px; top:8%;  left:5%;  transform:rotate(-8deg);  animation-duration:8s;  animation-delay:0s; }
-    .deco-card:nth-child(2) { width:150px;height:90px;  top:15%; right:6%; transform:rotate(10deg);  animation-duration:10s; animation-delay:-2s; }
-    .deco-card:nth-child(3) { width:120px;height:70px;  bottom:12%;left:8%;transform:rotate(6deg);   animation-duration:9s;  animation-delay:-4s; }
-    .deco-card:nth-child(4) { width:180px;height:100px; bottom:8%;right:4%;transform:rotate(-12deg); animation-duration:11s; animation-delay:-1s; }
-    .deco-card:nth-child(5) { width:100px;height:60px;  top:45%; left:2%;  transform:rotate(4deg);   animation-duration:13s; animation-delay:-5s; }
-    .deco-card:nth-child(6) { width:130px;height:80px;  top:40%; right:3%; transform:rotate(-6deg);  animation-duration:12s; animation-delay:-3s; }
-    @keyframes cardDrift {
-      from { transform: translateY(0px)   rotate(var(--r, -8deg)); }
-      to   { transform: translateY(-22px) rotate(var(--r, -8deg)); }
-    }
+    <!-- ===== OPEN GRAPH – PROFILE EXTENSION ===== -->
+    <meta property="og:profile:first_name" content="Shanudha" />
+    <meta property="og:profile:last_name" content="Tirosh" />
+    <meta property="og:profile:username" content="ShanuFx" />
+    <meta property="og:profile:gender" content="male" />
+    <!-- LinkedIn favors these OG tags for rich link previews -->
+    <meta property="og:email" content="info.shanudhatirosh@gmail.com" />
+    <meta property="og:country-name" content="Sri Lanka" />
 
-    /* ─── Main Layout ─── */
-    .page-center {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
+    <!-- ===== EXTENDED PERFORMANCE HINTS ===== -->
+    <link rel="preconnect" href="https://firebaseapp.com" crossorigin />
+    <link rel="preconnect" href="https://firebase.google.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.ipify.org" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://shanu-fx.web.app" />
 
-    /* ─── Hero Glass Card ─── */
-    .hero-card {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid rgba(0,229,255,0.22);
-      border-radius: 28px;
-      box-shadow:
-        0 0 0 1px rgba(0,229,255,0.08),
-        0 8px 60px rgba(0,0,0,0.55),
-        0 0 80px rgba(0,229,255,0.08),
-        inset 0 1px 0 rgba(255,255,255,0.08);
-      max-width: 680px;
-      width: 100%;
-      padding: 3rem 3.5rem;
-      animation: heroEntrance 0.9s cubic-bezier(0.16,1,0.3,1) both;
-    }
-    @keyframes heroEntrance {
-      from { opacity:0; transform: translateY(48px) scale(0.97); }
-      to   { opacity:1; transform: translateY(0)    scale(1);    }
-    }
+    <!-- ===== DISCOVERY & INDEXING ===== -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="language" content="English" />
 
-    /* ─── Badge ─── */
-    .site-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(0,229,255,0.07);
-      border: 1px solid rgba(0,229,255,0.25);
-      color: var(--cyan);
-      font-family: 'Orbitron', sans-serif;
-      font-size: .65rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 100px;
-      margin-bottom: 1.6rem;
-      animation: badgePulse 3s ease-in-out infinite;
-    }
-    .site-badge .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 8px var(--cyan);
-      animation: dotBlink 1.4s ease-in-out infinite;
-    }
-    @keyframes badgePulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(0,229,255,0.2); }
-      50%      { box-shadow: 0 0 0 6px rgba(0,229,255,0); }
-    }
-    @keyframes dotBlink {
-      0%,100% { opacity:1; } 50% { opacity:.3; }
-    }
-
-    /* ─── Heading ─── */
-    .hero-heading {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      background: linear-gradient(135deg, #e8f4ff 0%, var(--cyan) 50%, var(--magenta) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-    }
-
-    /* ─── Sub copy ─── */
-    .hero-desc {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 2rem;
-    }
-
-    /* ─── URL Strip ─── */
-    .url-strip {
-      background: rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px;
-      padding: 1.1rem 1.5rem;
-      margin-bottom: 1.6rem;
-    }
-    .url-label {
-      font-family: 'Orbitron', sans-serif;
-      font-size: .58rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 5px;
-    }
-    .url-old {
-      font-family: 'Rajdhani', monospace;
-      font-size: .95rem;
-      color: rgba(200,200,255,0.35);
-      text-decoration: line-through;
-      text-decoration-color: rgba(247,37,133,0.6);
-      text-decoration-thickness: 2px;
-    }
-    .url-row {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      flex-wrap: wrap;
-    }
-    .arrow-icon { color: var(--cyan); font-size: 1rem; flex-shrink: 0; }
-
-    .url-new {
-      font-family: 'Orbitron', sans-serif;
-      font-size: .88rem;
-      font-weight: 700;
-      color: var(--cyan);
-      text-shadow: 0 0 16px rgba(0,229,255,0.6), 0 0 32px rgba(0,229,255,0.2);
-      word-break: break-all;
-    }
-
-    /* ─── CTA Button ─── */
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: .85rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      color: var(--navy) !important;
-      background: linear-gradient(135deg, var(--cyan) 0%, #00b8d9 100%);
-      border: none;
-      border-radius: 12px;
-      padding: 14px 32px;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-      transition: transform .22s ease, box-shadow .22s ease;
-      box-shadow:
-        0 0 20px rgba(0,229,255,0.4),
-        0 0 60px rgba(0,229,255,0.15),
-        inset 0 1px 0 rgba(255,255,255,0.3);
-      animation: ctaPulse 2.5s ease-in-out infinite;
-      cursor: pointer;
-    }
-    .cta-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity .22s ease;
-    }
-    .cta-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 40px rgba(0,229,255,0.65), 0 0 100px rgba(0,229,255,0.2), inset 0 1px 0 rgba(255,255,255,0.35); }
-    .cta-btn:hover::before { opacity: 1; }
-    .cta-btn:active { transform: translateY(0) scale(0.99); }
-    .cta-btn i { transition: transform .22s ease; }
-    .cta-btn:hover i { transform: translateX(4px); }
-    @keyframes ctaPulse {
-      0%,100% { box-shadow: 0 0 20px rgba(0,229,255,0.4), 0 0 60px rgba(0,229,255,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
-      50%      { box-shadow: 0 0 32px rgba(0,229,255,0.65),0 0 90px rgba(0,229,255,0.25), inset 0 1px 0 rgba(255,255,255,0.3); }
-    }
-
-    /* ─── Divider ─── */
-    .glass-divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,229,255,0.25), transparent);
-      margin: 1.8rem 0;
-    }
-
-    /* ─── Countdown ─── */
-    .countdown-wrap {
-      text-align: center;
-    }
-    .countdown-text {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: .92rem;
-      color: var(--text-muted);
-      margin-bottom: .7rem;
-      letter-spacing: .04em;
-    }
-    .countdown-text span#timer {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      color: var(--cyan);
-      font-size: 1rem;
-    }
-    /* Progress bar */
-    .prog-track {
-      background: rgba(0,229,255,0.07);
-      border: 1px solid rgba(0,229,255,0.12);
-      border-radius: 100px;
-      height: 6px;
-      overflow: hidden;
-    }
-    .prog-fill {
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(90deg, var(--cyan), var(--magenta));
-      border-radius: 100px;
-      box-shadow: 0 0 10px rgba(0,229,255,0.5);
-      transition: width 1s linear;
-    }
-
-    /* ─── Footer note ─── */
-    .footer-note {
-      text-align: center;
-      font-size: .78rem;
-      color: rgba(200,220,255,0.28);
-      margin-top: 1.4rem;
-      letter-spacing: .04em;
-    }
-    .footer-note a { color: rgba(0,229,255,0.5); text-decoration: none; }
-    .footer-note a:hover { color: var(--cyan); }
-
-    /* ─── Responsive ─── */
-    @media (max-width: 576px) {
-      .hero-card { padding: 2rem 1.5rem; border-radius: 20px; }
-      .url-row { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Background Layers -->
-  <div class="bg-gradient-mesh" aria-hidden="true"></div>
-  <div class="bg-scanlines" aria-hidden="true"></div>
-
-  <!-- Floating Orbs -->
-  <div class="orbs-wrap" aria-hidden="true">
-    <div class="orb"></div>
-    <div class="orb"></div>
-    <div class="orb"></div>
-    <div class="orb"></div>
-    <div class="orb"></div>
-  </div>
-
-  <!-- Decorative Drifting Glass Cards -->
-  <div class="deco-cards-wrap" aria-hidden="true">
-    <div class="deco-card"></div>
-    <div class="deco-card"></div>
-    <div class="deco-card"></div>
-    <div class="deco-card"></div>
-    <div class="deco-card"></div>
-    <div class="deco-card"></div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="page-center">
-    <div class="hero-card">
-
-      <!-- Badge -->
-      <div class="site-badge">
-        <span class="dot"></span>
-        ShanuFx &nbsp;·&nbsp; Site Update
-      </div>
-
-      <!-- Heading -->
-      <h1 class="hero-heading">We've Moved!</h1>
-
-      <!-- Description -->
-      <p class="hero-desc">
-        Our website has officially moved to a brand-new home.
-        Please update your bookmarks — we won't be here much longer!
-        You'll be redirected automatically in a moment.
-      </p>
-
-      <!-- URL Strip -->
-      <div class="url-strip mb-4">
-        <p class="url-label"><i class="fa-solid fa-link-slash me-1"></i> Old Address</p>
-        <p class="url-old mb-3">https://shanudhatirosh.github.io/</p>
-
-        <p class="url-label"><i class="fa-solid fa-location-dot me-1"></i> New Address</p>
-        <div class="url-row">
-          <span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-          <span class="url-new">https://shanu-fx.web.app/</span>
-        </div>
-      </div>
-
-      <!-- CTA Button -->
-      <div class="mb-1">
-        <a href="https://shanu-fx.web.app/" class="cta-btn">
-          <i class="fa-solid fa-rocket"></i>
-          Take Me There
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-
-      <hr class="glass-divider" />
-
-      <!-- Countdown -->
-      <div class="countdown-wrap">
-        <p class="countdown-text">
-          <i class="fa-regular fa-clock me-1"></i>
-          Redirecting in <span id="timer">10</span> seconds&hellip;
-        </p>
-        <div class="prog-track">
-          <div class="prog-fill" id="progFill"></div>
-        </div>
-      </div>
-
-      <!-- Footer Note -->
-      <p class="footer-note mt-3">
-        Not redirecting? <a href="https://shanu-fx.web.app/">Click here</a> to go manually.
-      </p>
-
-    </div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    /* ─── Countdown & Progress Bar ─── */
-    const TOTAL = 10;
-    let remaining = TOTAL;
-    const timerEl  = document.getElementById('timer');
-    const progFill = document.getElementById('progFill');
-
-    // initialise bar at 100 %
-    progFill.style.width = '100%';
-
-    const tick = setInterval(() => {
-      remaining--;
-      timerEl.textContent = remaining;
-      // shrink bar proportionally
-      progFill.style.width = ((remaining / TOTAL) * 100) + '%';
-
-      if (remaining <= 0) {
-        clearInterval(tick);
-        window.location.replace('https://shanu-fx.web.app/');
+    <!-- ===== STRUCTURED DATA (JSON-LD) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ShanuFx Portfolio",
+      "alternateName": "Shanudha Tirosh Portfolio",
+      "url": "https://shanu-fx.web.app/",
+      "description": "Official portfolio of Shanudha Tirosh (ShanuFx) — Android System Developer & IoT Engineer from Sri Lanka.",
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://shanu-fx.web.app/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
-    }, 1000);
-  </script>
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Shanudha Tirosh",
+      "alternateName": "ShanuFx",
+      "url": "https://shanu-fx.web.app/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://shanu-fx.web.app/assets/shanufx_logo.png",
+        "width": 800,
+        "height": 800
+      },
+      "jobTitle": "Android System Developer & IoT Engineer",
+      "description": "Full-stack software engineer specializing in Android System Internals, IoT Automation, and high-performance mobile networking. Creator of NovaMesh and SHANU-MD.",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "G/Dharmashoka College, Ambalangoda"
+      },
+      "nationality": {
+        "@type": "Country",
+        "name": "Sri Lanka"
+      },
+      "knowsAbout": [
+        "Android System Development",
+        "IoT Automation",
+        "Full-stack Web Engineering",
+        "WhatsApp Bot Development",
+        "Firebase",
+        "Node.js",
+        "Python",
+        "React",
+        "Network Optimization"
+      ],
+      "knowsLanguage": ["en", "si"],
+      "sameAs": [
+        "https://www.linkedin.com/in/shanudhatirosh/",
+        "https://github.com/ShanudhaTirosh",
+        "https://web.facebook.com/tirosh.shanudha/",
+        "https://www.instagram.com/shanudha_tirosh/"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://shanu-fx.web.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://shanu-fx.web.app/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contact",
+          "item": "https://shanu-fx.web.app/#contact"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ===== STRUCTURED DATA: ORGANISATION (Netch Solutions / ShanuFx brand) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Netch Solutions",
+      "alternateName": ["ShanuFx", "ShanudhaTirosh"],
+      "url": "https://shanu-fx.web.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://shanu-fx.web.app/assets/shanufx_logo.png",
+        "width": 800,
+        "height": 800
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Shanudha Tirosh",
+        "url": "https://shanu-fx.web.app/"
+      },
+      "foundingDate": "2023",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Ambalangoda, Sri Lanka"
+      },
+      "description": "Sri Lankan software engineering brand specializing in Android system internals, IoT automation, VPN platforms, and full-stack web applications.",
+      "areaServed": ["Sri Lanka", "Worldwide"],
+      "knowsAbout": [
+        "Android System Development",
+        "IoT Automation",
+        "VPN Platform Engineering",
+        "Full-stack Web Development",
+        "Firebase",
+        "Node.js",
+        "React",
+        "Python"
+      ],
+      "email": "info.shanudhatirosh@gmail.com",
+      "sameAs": [
+        "https://github.com/ShanudhaTirosh",
+        "https://www.linkedin.com/in/shanudhatirosh/",
+        "https://web.facebook.com/tirosh.shanudha/",
+        "https://www.instagram.com/shanudha_tirosh/"
+      ]
+    }
+    </script>
+
+    <!-- ===== STRUCTURED DATA: PROFILE PAGE ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "ShanuFx | Shanudha Tirosh – Developer Portfolio",
+      "url": "https://shanu-fx.web.app/",
+      "dateCreated": "2023-01-01T00:00:00+05:30",
+      "dateModified": "2026-05-12T00:00:00+05:30",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ShanuFx Portfolio",
+        "url": "https://shanu-fx.web.app/"
+      },
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Shanudha Tirosh",
+        "alternateName": "ShanuFx",
+        "url": "https://shanu-fx.web.app/",
+        "jobTitle": "Android System Developer & IoT Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Netch Solutions"
+        }
+      }
+    }
+    </script>
+
+    <!-- ===== STRUCTURED DATA: SOFTWARE APPLICATIONS (Projects) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "ShanuFx Projects by Shanudha Tirosh",
+      "description": "Production-grade software projects built by Shanudha Tirosh (ShanuFx) across Android, web, IoT, and desktop platforms.",
+      "url": "https://shanu-fx.web.app/#projects",
+      "numberOfItems": 7,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "NovaMesh",
+            "applicationCategory": "NetworkingApplication",
+            "operatingSystem": "Android",
+            "description": "Android hotspot management app featuring a Kotlin foreground service, NanoHTTPD embedded web server with a live dashboard, and Firebase real-time integration. Built for network control and monitoring.",
+            "author": { "@type": "Person", "name": "Shanudha Tirosh" },
+            "url": "https://shanu-fx.web.app/#projects",
+            "programmingLanguage": ["Kotlin", "Java", "JavaScript"],
+            "keywords": "Android hotspot, network management, Firebase, Kotlin, NanoHTTPD"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "NovaNetX",
+            "applicationCategory": "WebApplication",
+            "operatingSystem": "Web",
+            "description": "V2Ray VPN subscription selling platform for Sri Lanka. Built with React/Vite frontend deployed on Firebase Hosting and a Node.js/Express backend on AWS VPS, integrated with 3x-UI panel. Features admin dashboard, real-time server status, and glassmorphism dark UI.",
+            "author": { "@type": "Person", "name": "Shanudha Tirosh" },
+            "url": "https://shanu-fx.web.app/#projects",
+            "programmingLanguage": ["JavaScript", "React", "Node.js"],
+            "keywords": "VPN platform, V2Ray, Firebase, AWS, Sri Lanka VPN, subscription management"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "NetPulse",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Android",
+            "description": "Production Android network monitoring app built with MVVM + Clean Architecture, Hilt DI, Jetpack Compose, and Material 3. Features real-time ping, traffic statistics, usage graphs, and a foreground monitoring service.",
+            "author": { "@type": "Person", "name": "Shanudha Tirosh" },
+            "url": "https://shanu-fx.web.app/#projects",
+            "programmingLanguage": ["Kotlin"],
+            "keywords": "Android network monitor, ping, traffic stats, Jetpack Compose, MVVM"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "VaultX",
+            "applicationCategory": "SecurityApplication",
+            "operatingSystem": "Windows, macOS, Linux",
+            "description": "Electron.js desktop password manager with AES-256-GCM encryption, bcrypt authentication, SQLite local storage, and end-to-end encrypted Firebase Firestore cloud sync.",
+            "author": { "@type": "Person", "name": "Shanudha Tirosh" },
+            "url": "https://shanu-fx.web.app/#projects",
+            "programmingLanguage": ["JavaScript", "Electron.js"],
+            "keywords": "password manager, AES-256, Electron, SQLite, Firebase, desktop app"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "NexusPOS",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "Single-file HTML point-of-sale system with Firebase backend and Chart.js analytics, featuring a glassmorphism dark luxury UI.",
+            "author": { "@type": "Person", "name": "Shanudha Tirosh" },
+            "url": "https://shanu-fx.web.app/#projects",
+            "programmingLanguage": ["HTML", "JavaScript"],
+            "keywords": "POS system, point of sale, Firebase, Chart.js, retail"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "ShanuFx Downloader",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Windows",
+            "description": "Python/PyQt6 desktop download manager with HTTP multi-threading, yt-dlp integration, libtorrent support, and a glassmorphism UI. Packaged as a distributable with PyInstaller and Inno Setup.",
+            "author": { "@type": "Person", "name": "Shanudha Tirosh" },
+            "url": "https://shanu-fx.web.app/#projects",
+            "programmingLanguage": ["Python"],
+            "keywords": "download manager, yt-dlp, torrent, PyQt6, Python desktop app"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "SHANU-MD",
+            "applicationCategory": "CommunicationApplication",
+            "operatingSystem": "Node.js",
+            "description": "WhatsApp bot built with Node.js and Baileys, featuring multi-source Sri Lankan movie search, parallel source querying, relevance scoring, and direct file streaming delivery.",
+            "author": { "@type": "Person", "name": "Shanudha Tirosh" },
+            "url": "https://shanu-fx.web.app/#projects",
+            "programmingLanguage": ["JavaScript", "Node.js"],
+            "keywords": "WhatsApp bot, Baileys, Node.js, movie search, Sri Lanka"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- ===== STRUCTURED DATA: FAQ PAGE (AI Overviews & Rich Snippets) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Shanudha Tirosh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shanudha Tirosh (online handle: ShanuFx) is a full-stack and Android system developer from Ambalangoda, Sri Lanka. He specializes in Android system internals, IoT automation, VPN platform engineering, and high-performance mobile networking. He is the creator of NovaMesh, NovaNetX, VaultX, NetPulse, NexusPOS, and SHANU-MD under his brand Netch Solutions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is ShanuFx?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ShanuFx is the developer alias and brand identity of Shanudha Tirosh, a Sri Lankan software engineer. The brand encompasses his personal projects and products built under Netch Solutions, covering Android development, IoT systems, VPN platforms, and full-stack web applications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is NovaMesh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NovaMesh is an Android hotspot management application developed by Shanudha Tirosh. It uses Kotlin, a foreground service, an embedded NanoHTTPD web server with a live dashboard, and Firebase real-time integration for comprehensive network monitoring and hotspot control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is NovaNetX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NovaNetX is a V2Ray VPN subscription selling platform built specifically for Sri Lanka by Shanudha Tirosh. It features a React/Vite frontend hosted on Firebase Hosting, a Node.js/Express backend on AWS, and integration with a 3x-UI panel. It includes a full admin dashboard, real-time server status monitoring, and a dark glassmorphism UI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What technologies does Shanudha Tirosh (ShanuFx) use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shanudha Tirosh works across a wide stack including Android (Kotlin, Jetpack Compose, MVVM), React, Vite, Node.js, Express, Firebase (Auth, Firestore, Realtime DB, Hosting), Python (PyQt6, Kivy), Electron.js, AWS (EC2, VPS), and IoT systems. His backend work includes REST API design, PM2 process management, SSL/TLS configuration, and V2Ray/3x-UI integration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Shanudha Tirosh from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shanudha Tirosh is from Ambalangoda in the Southern Province of Sri Lanka. He is an alumnus of G/Dharmashoka College, Ambalangoda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I contact Shanudha Tirosh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can reach Shanudha Tirosh via email at info.shanudhatirosh@gmail.com or through his social profiles on LinkedIn (linkedin.com/in/shanudhatirosh), GitHub (github.com/ShanudhaTirosh), Instagram (@shanudha_tirosh), or Facebook."
+          }
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+
+
+  
+  </head>
+ <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+      <!-- ===== BRANDING CONSOLE LOG ===== -->
+    <script>
+    (function() {
+        function logBranding() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    console.clear();
+                    console.log(
+                        "%cShanuFx",
+                        "color: #7c3aed; font-size: 50px; font-weight: bold; font-family: sans-serif; text-shadow: 3px 3px 0px rgba(124, 58, 237, 0.2);"
+                    );
+                    console.log(
+                        "%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh",
+                        "color: #f59e0b; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                    console.log(
+                        "%c🌐 Is that your IP: " + ip,
+                        "color: #06b6d4; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                })
+                .catch(() => {
+                    console.log("%cShanuFx", "color: #7c3aed; font-size: 50px; font-weight: bold;");
+                    console.log("%c⚠ If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh", "color: #f59e0b; font-size: 14px; font-weight: bold;");
+                });
+        }
+        logBranding();
+        setInterval(logBranding, 30000);
+    })();
+    </script>
 </body>
 </html>

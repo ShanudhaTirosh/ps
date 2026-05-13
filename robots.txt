@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shanudhatirosh.github.io/sitemap.xml
+Sitemap: https://shanu-fx.web.app/sitemap.xml

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -7,6 +7,7 @@ export default function Navbar() {
   const [mobileOpen, setMobile]   = useState(false);
   const [scrollPct, setScrollPct] = useState(0);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => {
@@ -18,40 +19,90 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => { setMobile(false); }, [location]);
 
+  // Smooth-scroll to a section id; if not on home, navigate there first
+  const handleHashClick = (e, sectionId) => {
+    e.preventDefault();
+    setMobile(false);
+    const scrollTo = () => {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    if (location.pathname === '/') {
+      scrollTo();
+    } else {
+      navigate('/');
+      // Wait for the new page to mount before scrolling
+      setTimeout(scrollTo, 150);
+    }
+  };
+
   const navLinks = [
-    { label: 'Home',       href: '/#home' },
-    { label: 'About',      href: '/#about' },
-    { label: 'Innovations',href: '/#innovations' },
-    { label: 'Showcase',   href: '/showcase' },
-    { label: 'Contact',    href: '/#contact' },
+    { label: 'Home',        type: 'hash', sectionId: 'home'        },
+    { label: 'About',       type: 'hash', sectionId: 'about'       },
+    { label: 'Innovations', type: 'hash', sectionId: 'innovations' },
+    { label: 'Showcase',    type: 'route', to: '/showcase'          },
+    { label: 'Contact',     type: 'hash', sectionId: 'contact'     },
   ];
+
+  const renderLink = (l, extraClass = 'nav-link') => {
+    if (l.type === 'hash') {
+      return (
+        <a
+          href={`#${l.sectionId}`}
+          className={extraClass}
+          onClick={(e) => handleHashClick(e, l.sectionId)}
+        >
+          {l.label}
+        </a>
+      );
+    }
+    return (
+      <Link to={l.to} className={extraClass} onClick={() => setMobile(false)}>
+        {l.label}
+      </Link>
+    );
+  };
 
   return (
     <>
-      {/* Scroll progress */}
-      <motion.div 
-        id="scroll-progress" 
-        style={{ width: `${scrollPct}%`, position: 'fixed', top: 0, left: 0, height: '3px', background: 'linear-gradient(90deg, #7c3aed, #06b6d4)', zIndex: 101 }} 
+      {/* Scroll progress bar */}
+      <motion.div
+        style={{
+          width: `${scrollPct}%`,
+          position: 'fixed', top: 0, left: 0,
+          height: '3px',
+          background: 'linear-gradient(90deg, #7c3aed, #06b6d4)',
+          zIndex: 102,
+          transformOrigin: 'left',
+        }}
       />
 
       {/* Main nav */}
-      <motion.header 
+      <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
         style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        padding: '0.75rem 1.5rem',
-        background: scrolled ? 'rgba(4,4,10,0.85)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-        transition: 'all 0.35s ease',
-      }}>
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+          padding: '0.75rem 1.5rem',
+          background: scrolled ? 'rgba(4,4,10,0.88)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+          transition: 'all 0.35s ease',
+        }}
+      >
         <nav style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+
           {/* Logo */}
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
+          <Link
+            to="/"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}
+            onClick={() => setMobile(false)}
+          >
             <div style={{
               width: 36, height: 36, borderRadius: 10,
               background: 'linear-gradient(135deg,#7c3aed,#06b6d4)',
@@ -64,24 +115,29 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <ul style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', listStyle: 'none', margin: 0, padding: 0 }}
-              className="desktop-nav">
+          <ul className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', listStyle: 'none', margin: 0, padding: 0 }}>
             {navLinks.map(l => (
-              <li key={l.label}>
-                <a href={l.href} className="nav-link">{l.label}</a>
-              </li>
+              <li key={l.label}>{renderLink(l)}</li>
             ))}
             <li>
-              <a href="/#contact" className="btn-primary" style={{ padding: '0.55rem 1.25rem', fontSize: '0.82rem' }}>
+              <a
+                href="#contact"
+                className="btn-primary"
+                style={{ padding: '0.55rem 1.25rem', fontSize: '0.82rem' }}
+                onClick={(e) => handleHashClick(e, 'contact')}
+              >
                 Let's Talk
               </a>
             </li>
           </ul>
 
           {/* Hamburger */}
-          <button onClick={() => setMobile(o => !o)} className="mobile-menu-btn"
-            style={{ display: 'none', background: 'none', border: 'none', color: '#94a3b8', fontSize: '1.4rem', cursor: 'pointer' }}
-            aria-label="Menu">
+          <button
+            onClick={() => setMobile(o => !o)}
+            className="mobile-menu-btn"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+          >
             {mobileOpen ? '✕' : '☰'}
           </button>
         </nav>
@@ -90,26 +146,136 @@ export default function Navbar() {
       {/* Mobile overlay */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="mobile-nav-overlay open"
+            transition={{ duration: 0.25 }}
+            className="mobile-nav-overlay"
           >
-            <button onClick={() => setMobile(false)}
-              style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'none', border: 'none', color: '#94a3b8', fontSize: '1.75rem', cursor: 'pointer' }}>
+            {/* Close button */}
+            <button
+              onClick={() => setMobile(false)}
+              className="mobile-close-btn"
+              aria-label="Close menu"
+            >
               ✕
             </button>
-            {navLinks.map(l => (
-              <a key={l.label} href={l.href} className="mobile-nav-link" onClick={() => setMobile(false)}>
-                {l.label}
+
+            <div className="mobile-nav-links">
+              {navLinks.map(l => renderLink(l, 'mobile-nav-link'))}
+              <a
+                href="#contact"
+                className="btn-primary mobile-cta"
+                onClick={(e) => handleHashClick(e, 'contact')}
+              >
+                Let's Talk
               </a>
-            ))}
+              <Link
+                to="/admin"
+                className="mobile-admin-link"
+                onClick={() => setMobile(false)}
+              >
+                Admin Panel
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
+        /* ── Desktop: hide hamburger ── */
+        .mobile-menu-btn {
+          display: none;
+          background: none;
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 8px;
+          color: #94a3b8;
+          font-size: 1.3rem;
+          cursor: pointer;
+          padding: 0.35rem 0.7rem;
+          transition: all 0.2s;
+        }
+        .mobile-menu-btn:hover {
+          border-color: rgba(124,58,237,0.5);
+          color: #f1f0f7;
+        }
+
+        /* ── Nav links ── */
+        .nav-link {
+          font-family: 'Syne', sans-serif;
+          font-size: 0.88rem;
+          font-weight: 600;
+          color: #94a3b8;
+          text-decoration: none;
+          transition: color 0.2s;
+          letter-spacing: 0.01em;
+        }
+        .nav-link:hover { color: #f1f0f7; }
+
+        /* ── Mobile overlay ── */
+        .mobile-nav-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 99;
+          background: rgba(4, 4, 10, 0.97);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem;
+        }
+        .mobile-close-btn {
+          position: absolute;
+          top: 1.5rem;
+          right: 1.5rem;
+          background: none;
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 8px;
+          color: #94a3b8;
+          font-size: 1.5rem;
+          cursor: pointer;
+          padding: 0.3rem 0.7rem;
+          transition: all 0.2s;
+        }
+        .mobile-close-btn:hover { color: #f1f0f7; border-color: rgba(124,58,237,0.5); }
+        .mobile-nav-links {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+          width: 100%;
+        }
+        .mobile-nav-link {
+          font-family: 'Syne', sans-serif;
+          font-size: 1.6rem;
+          font-weight: 700;
+          color: #94a3b8;
+          text-decoration: none;
+          transition: color 0.2s;
+          letter-spacing: -0.02em;
+        }
+        .mobile-nav-link:hover { color: #f1f0f7; }
+        .mobile-cta {
+          margin-top: 0.5rem;
+          font-size: 0.95rem !important;
+          padding: 0.8rem 2.5rem !important;
+        }
+        .mobile-admin-link {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.7rem;
+          color: #374151;
+          text-decoration: none;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          transition: color 0.2s;
+          margin-top: 1rem;
+        }
+        .mobile-admin-link:hover { color: #4b5563; }
+
+        /* ── Responsive ── */
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
