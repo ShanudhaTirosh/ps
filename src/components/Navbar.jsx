@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false);
   const [mobileOpen, setMobile]   = useState(false);
   const [scrollPct, setScrollPct] = useState(0);
-  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,8 +18,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => { setMobile(false); }, [location]);
+
 
   // Smooth-scroll to a section id; if not on home, navigate there first
   const handleHashClick = (e, sectionId) => {
@@ -30,7 +28,7 @@ export default function Navbar() {
       const el = document.getElementById(sectionId);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
-    if (location.pathname === '/') {
+    if (window.location.pathname === '/') {
       scrollTo();
     } else {
       navigate('/');
@@ -171,13 +169,7 @@ export default function Navbar() {
               >
                 Let's Talk
               </a>
-              <Link
-                to="/admin"
-                className="mobile-admin-link"
-                onClick={() => setMobile(false)}
-              >
-                Admin Panel
-              </Link>
+
             </div>
           </motion.div>
         )}
