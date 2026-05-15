@@ -6,6 +6,7 @@ export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false);
   const [mobileOpen, setMobile]   = useState(false);
   const [scrollPct, setScrollPct] = useState(0);
+  const [activeSection, setActiveSection] = useState('home');
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,8 +17,29 @@ export default function Navbar() {
       setScrollPct(total > 0 ? (window.scrollY / total) * 100 : 0);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+
+    // Scroll spy logic
+    let observer;
+    if (location.pathname === '/') {
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "-15% 0px -45% 0px" });
+
+      ['home', 'about', 'innovations', 'contact'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (observer) observer.disconnect();
+    };
+  }, [location.pathname]);
 
   // Smooth-scroll to a section id; if not on home, navigate there first
   const handleHashClick = (e, sectionId) => {
@@ -46,7 +68,13 @@ export default function Navbar() {
   ];
 
   const renderLink = (l, extraClass = 'nav-link') => {
-    const isActive = l.type === 'route' ? location.pathname === l.to : (location.pathname === '/' && l.sectionId === 'home');
+    let isActive = false;
+    if (l.type === 'route') {
+      isActive = location.pathname === l.to;
+    } else if (location.pathname === '/') {
+      isActive = activeSection === l.sectionId;
+    }
+    
     const className = `${extraClass} ${isActive ? 'active' : ''}`;
 
     if (l.type === 'hash') {
