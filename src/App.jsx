@@ -36,27 +36,30 @@ function AdBlockDetector({ children }) {
     const checkAdBlock = async () => {
       let blocked = false;
 
-      // Check for common adblocker classes
+      // Method 1: Element check with aggressive classes
       const testAd = document.createElement('div');
       testAd.innerHTML = '&nbsp;';
-      testAd.className = 'ad-banner adsbox ads google-ads-container';
-      testAd.style.position = 'absolute';
-      testAd.style.left = '-9999px';
-      testAd.style.top = '-9999px';
+      testAd.className = 'adsbox adsbox-inner ad-banner google-ads ads-area ad-slot';
+      testAd.style.cssText = 'position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px;';
       document.body.appendChild(testAd);
 
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // Wait a bit longer for blockers to act
+      await new Promise(resolve => setTimeout(resolve, 800));
 
       if (testAd.offsetHeight === 0 || testAd.style.display === 'none' || testAd.style.visibility === 'hidden') {
         blocked = true;
       }
       document.body.removeChild(testAd);
 
-      // Final check: fetch a known ad script
+      // Method 2: Fetch check (if not already blocked)
       if (!blocked) {
         try {
-          const response = await fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', { mode: 'no-cors' });
-          if (!response.ok && response.status === 0) blocked = true;
+          // Brave Shields are very aggressive against trackers
+          const trackers = [
+            'https://www.google-analytics.com/analytics.js',
+            'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+          ];
+          await Promise.all(trackers.map(url => fetch(url, { mode: 'no-cors', cache: 'no-store' })));
         } catch {
           blocked = true;
         }
