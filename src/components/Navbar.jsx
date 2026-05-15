@@ -27,9 +27,9 @@ export default function Navbar() {
             setActiveSection(entry.target.id);
           }
         });
-      }, { threshold: 0.1, rootMargin: "-15% 0px -45% 0px" });
+      }, { threshold: 0.2, rootMargin: "-20% 0px -20% 0px" });
 
-      ['home', 'about', 'innovations', 'contact'].forEach(id => {
+      ['home', 'about', 'skills', 'experience', 'services', 'testimonials', 'innovations', 'contact'].forEach(id => {
         const el = document.getElementById(id);
         if (el) observer.observe(el);
       });
@@ -72,7 +72,18 @@ export default function Navbar() {
     if (l.type === 'route') {
       isActive = location.pathname === l.to;
     } else if (location.pathname === '/') {
-      isActive = activeSection === l.sectionId;
+      // Map sub-sections to main links
+      const sectionMap = {
+        'home': 'home',
+        'about': 'about',
+        'skills': 'about',
+        'experience': 'about',
+        'services': 'about',
+        'testimonials': 'about', // Or feedback, but feedback is now a separate page
+        'innovations': 'innovations',
+        'contact': 'contact'
+      };
+      isActive = sectionMap[activeSection] === l.sectionId;
     }
     
     const className = `${extraClass} ${isActive ? 'active' : ''}`;
@@ -205,6 +216,61 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Scroll Navigation Buttons */}
+      <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', zIndex: 90 }}>
+        <AnimatePresence>
+          {scrolled && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.5, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.5, x: 20 }}
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              style={{
+                width: '45px', height: '45px', borderRadius: '12px',
+                background: 'rgba(124, 58, 237, 0.2)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(124, 58, 237, 0.3)',
+                color: '#fff', fontSize: '1.2rem',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.3)'
+              }}
+              title="Scroll to Top"
+            >
+              <i className="fas fa-chevron-up" />
+            </motion.button>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {scrollPct < 95 && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.5, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.5, x: 20 }}
+              whileHover={{ y: 5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
+              style={{
+                width: '45px', height: '45px', borderRadius: '12px',
+                background: 'rgba(6, 182, 212, 0.15)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(6, 182, 212, 0.25)',
+                color: '#fff', fontSize: '1.2rem',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.3)'
+              }}
+              title="Scroll to Bottom"
+            >
+              <i className="fas fa-chevron-down" />
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </div>
 
       <style>{`
         /* ── Desktop: hide hamburger ── */
