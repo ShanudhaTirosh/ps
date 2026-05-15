@@ -36,11 +36,6 @@ function AdBlockDetector({ children }) {
     const checkAdBlock = async () => {
       let blocked = false;
 
-      // Check for Brave Shields
-      if (navigator.brave && await navigator.brave.isBrave()) {
-        blocked = true;
-      }
-
       // Check for common adblocker classes
       const testAd = document.createElement('div');
       testAd.innerHTML = '&nbsp;';
