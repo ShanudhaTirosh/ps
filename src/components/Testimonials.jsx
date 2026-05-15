@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
-export default function Testimonials() {
+export default function Testimonials({ limit }) {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,6 +26,8 @@ export default function Testimonials() {
   if (loading) return null;
   if (testimonials.length === 0) return null;
 
+  const displayTestimonials = limit ? testimonials.slice(0, limit) : testimonials;
+
   return (
     <section id="testimonials" style={{ padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
@@ -35,7 +38,7 @@ export default function Testimonials() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-          {testimonials.map((test, i) => (
+          {displayTestimonials.map((test, i) => (
             <motion.div
               key={test.id || i}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -59,6 +62,14 @@ export default function Testimonials() {
             </motion.div>
           ))}
         </div>
+
+        {limit && testimonials.length > limit && (
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link to="/testimonials" className="btn-outline">
+              View All Testimonials <i className="fas fa-arrow-right" style={{ marginLeft: '0.5rem', fontSize: '0.8rem' }} />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

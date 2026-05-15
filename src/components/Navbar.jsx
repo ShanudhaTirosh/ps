@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -7,6 +7,7 @@ export default function Navbar() {
   const [mobileOpen, setMobile]   = useState(false);
   const [scrollPct, setScrollPct] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => {
@@ -18,8 +19,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-
-
   // Smooth-scroll to a section id; if not on home, navigate there first
   const handleHashClick = (e, sectionId) => {
     e.preventDefault();
@@ -28,7 +27,7 @@ export default function Navbar() {
       const el = document.getElementById(sectionId);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
-    if (window.location.pathname === '/') {
+    if (location.pathname === '/') {
       scrollTo();
     } else {
       navigate('/');
@@ -38,19 +37,23 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: 'Home',        type: 'hash', sectionId: 'home'        },
-    { label: 'About',       type: 'hash', sectionId: 'about'       },
-    { label: 'Innovations', type: 'hash', sectionId: 'innovations' },
-    { label: 'Showcase',    type: 'route', to: '/showcase'          },
-    { label: 'Contact',     type: 'hash', sectionId: 'contact'     },
+    { label: 'Home',        type: 'hash',  sectionId: 'home'       },
+    { label: 'About',       type: 'hash',  sectionId: 'about'      },
+    { label: 'Innovations', type: 'hash',  sectionId: 'innovations'},
+    { label: 'Showcase',    type: 'route', to: '/showcase'         },
+    { label: 'Feedback',    type: 'route', to: '/testimonials'    },
+    { label: 'Contact',     type: 'hash',  sectionId: 'contact'    },
   ];
 
   const renderLink = (l, extraClass = 'nav-link') => {
+    const isActive = l.type === 'route' ? location.pathname === l.to : (location.pathname === '/' && l.sectionId === 'home');
+    const className = `${extraClass} ${isActive ? 'active' : ''}`;
+
     if (l.type === 'hash') {
       return (
         <a
           href={`#${l.sectionId}`}
-          className={extraClass}
+          className={className}
           onClick={(e) => handleHashClick(e, l.sectionId)}
         >
           {l.label}
@@ -58,7 +61,7 @@ export default function Navbar() {
       );
     }
     return (
-      <Link to={l.to} className={extraClass} onClick={() => setMobile(false)}>
+      <Link to={l.to} className={className} onClick={() => setMobile(false)}>
         {l.label}
       </Link>
     );
@@ -204,6 +207,11 @@ export default function Navbar() {
           letter-spacing: 0.01em;
         }
         .nav-link:hover { color: #f1f0f7; }
+        .nav-link.active { color: #f1f0f7; position: relative; }
+        .nav-link.active::after {
+          content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px;
+          background: linear-gradient(90deg, #7c3aed, #06b6d4); border-radius: 2px;
+        }
 
         /* ── Mobile overlay ── */
         .mobile-nav-overlay {
@@ -249,7 +257,12 @@ export default function Navbar() {
           transition: color 0.2s;
           letter-spacing: -0.02em;
         }
-        .mobile-nav-link:hover { color: #f1f0f7; }
+        .mobile-nav-link:hover, .mobile-nav-link.active { color: #f1f0f7; }
+        .mobile-nav-link.active {
+          background: linear-gradient(90deg, #7c3aed, #06b6d4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
         .mobile-cta {
           margin-top: 0.5rem;
           font-size: 0.95rem !important;

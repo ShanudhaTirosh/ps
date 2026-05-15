@@ -333,7 +333,7 @@ export default function Home() {
         {/* ══════════════════ NEW SECTIONS ══════════════════ */}
         <Experience />
         <Services />
-        <Testimonials />
+        <Testimonials limit={3} />
 
         {/* ══════════════════ INNOVATIONS ══════════════════ */}
         <section id="innovations" style={{ padding: '6rem 1.5rem' }}>
