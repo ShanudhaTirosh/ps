@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function AdminLogin() {
@@ -44,10 +44,31 @@ export default function AdminLogin() {
           Sign in with Google
         </button>
 
-        <p style={{ fontSize: '0.7rem', color: '#2a2a3a', marginTop: '1.5rem' }}>
+        <p style={{ fontSize: '0.7rem', color: '#2a2a3a', marginTop: '1.5rem', marginBottom: '1rem' }}>
           <i className="fas fa-shield-alt" style={{ marginRight: '0.3rem' }} />
           Secured with Firebase Authentication
         </p>
+
+        <Link 
+          to="/" 
+          style={{ 
+            fontSize: '0.8rem', 
+            color: '#7c3aed', 
+            textDecoration: 'none', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '0.5rem',
+            marginTop: '0.5rem',
+            fontWeight: 600,
+            opacity: 0.8,
+            transition: 'opacity 0.2s'
+          }}
+          onMouseEnter={(e) => e.target.style.opacity = 1}
+          onMouseLeave={(e) => e.target.style.opacity = 0.8}
+        >
+          <i className="fas fa-arrow-left" /> Back to Website
+        </Link>
       </div>
     </div>
   );

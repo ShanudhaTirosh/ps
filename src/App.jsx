@@ -34,7 +34,14 @@ function AdBlockDetector({ children }) {
     if (user) return; // Don't check for admins
 
     const checkAdBlock = async () => {
-      // Method 1: Check for common adblocker classes
+      let blocked = false;
+
+      // Check for Brave Shields
+      if (navigator.brave && await navigator.brave.isBrave()) {
+        blocked = true;
+      }
+
+      // Check for common adblocker classes
       const testAd = document.createElement('div');
       testAd.innerHTML = '&nbsp;';
       testAd.className = 'ad-banner adsbox ads google-ads-container';
@@ -43,12 +50,24 @@ function AdBlockDetector({ children }) {
       testAd.style.top = '-9999px';
       document.body.appendChild(testAd);
 
-      window.setTimeout(() => {
-        if (testAd.offsetHeight === 0 || testAd.style.display === 'none' || testAd.style.visibility === 'hidden') {
-          setIsBlocked(true);
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      if (testAd.offsetHeight === 0 || testAd.style.display === 'none' || testAd.style.visibility === 'hidden') {
+        blocked = true;
+      }
+      document.body.removeChild(testAd);
+
+      // Final check: fetch a known ad script
+      if (!blocked) {
+        try {
+          const response = await fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', { mode: 'no-cors' });
+          if (!response.ok && response.status === 0) blocked = true;
+        } catch {
+          blocked = true;
         }
-        document.body.removeChild(testAd);
-      }, 300);
+      }
+
+      setIsBlocked(blocked);
     };
 
     checkAdBlock();
