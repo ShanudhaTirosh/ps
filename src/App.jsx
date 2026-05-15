@@ -34,38 +34,34 @@ function AdBlockDetector({ children }) {
     if (user) return; // Don't check for admins
 
     const checkAdBlock = async () => {
-      let blocked = false;
+      if (user) return;
 
-      // Method 1: Element check with aggressive classes
-      const testAd = document.createElement('div');
-      testAd.innerHTML = '&nbsp;';
-      testAd.className = 'adsbox adsbox-inner ad-banner google-ads ads-area ad-slot';
-      testAd.style.cssText = 'position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px;';
-      document.body.appendChild(testAd);
+      // Adblockers and Brave Shields are hardcoded to block scripts named ads.js
+      window.canRunAds = false; 
+      const scriptTest = new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = '/ads.js'; // This was created earlier in the public folder
+        script.async = true;
+        
+        script.onload = () => {
+          try { document.head.removeChild(script); } catch { /* ignore */ }
+          // If script loaded, check if it actually executed (window.canRunAds set in ads.js)
+          resolve(window.canRunAds !== true);
+        };
+        script.onerror = () => {
+          try { document.head.removeChild(script); } catch { /* ignore */ }
+          resolve(true); // Explicitly blocked by a shield/blocker
+        };
+        // Timeout check
+        setTimeout(() => {
+          try { document.head.removeChild(script); } catch { /* ignore */ }
+          resolve(window.canRunAds !== true);
+        }, 1500);
+        document.head.appendChild(script);
+      });
 
-      // Wait a bit longer for blockers to act
-      await new Promise(resolve => setTimeout(resolve, 800));
-
-      if (testAd.offsetHeight === 0 || testAd.style.display === 'none' || testAd.style.visibility === 'hidden') {
-        blocked = true;
-      }
-      document.body.removeChild(testAd);
-
-      // Method 2: Fetch check (if not already blocked)
-      if (!blocked) {
-        try {
-          // Brave Shields are very aggressive against trackers
-          const trackers = [
-            'https://www.google-analytics.com/analytics.js',
-            'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-          ];
-          await Promise.all(trackers.map(url => fetch(url, { mode: 'no-cors', cache: 'no-store' })));
-        } catch {
-          blocked = true;
-        }
-      }
-
-      setIsBlocked(blocked);
+      const isBlocked = await scriptTest;
+      setIsBlocked(isBlocked);
     };
 
     checkAdBlock();
@@ -101,7 +97,9 @@ function AdBlockDetector({ children }) {
             <div style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>🛡️</div>
             <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#f1f0f7', fontWeight: 800 }}>Shields Detected</h2>
             <p style={{ color: '#94a3b8', lineHeight: 1.6, marginBottom: '2.5rem' }}>
-              I noticed you're using an ad-blocker or Brave Shields. To support my work and view the full experience, please consider disabling them for this site.
+              I noticed you're using an ad-blocker or Brave Shields. To view the full experience, please consider disabling them for this site.
+              <br /><br />
+              <strong style={{ color: '#ff4d00' }}>Brave Users:</strong> Click the orange lion icon in your address bar and toggle Shields to <strong>OFF</strong>.
             </p>
             <button
               onClick={() => window.location.reload()}
