@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../config/firebase';
@@ -60,6 +60,7 @@ const ROLES = [
 ];
 
 export default function Home() {
+  const navigate = useNavigate();
   const typedText = useTyping(ROLES);
   const [form, setForm]     = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState(null); // null | 'sending' | 'ok' | 'err'
@@ -118,7 +119,7 @@ export default function Home() {
               >
                 <div style={{ marginBottom: '1rem' }}>
                   <span style={{ fontFamily: 'JetBrains Mono,monospace', fontSize: '0.8rem', color: '#06b6d4', letterSpacing: '0.05em' }}>
-                    System.out.println("Hello, World!")<Link to="/admin" style={{ color: 'inherit', textDecoration: 'none', cursor: 'default' }}>;</Link>
+                    System.out.println("Hello, World!")<span onClick={() => navigate('/admin')} style={{ color: 'inherit', textDecoration: 'none', cursor: 'default' }}>;</span>
                   </span>
                 </div>
                 <h1 style={{ fontSize: 'clamp(2.8rem,7vw,5.5rem)', fontFamily: 'Syne,sans-serif', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '1rem', color: '#f1f0f7' }}>
