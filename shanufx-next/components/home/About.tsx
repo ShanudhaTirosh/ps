@@ -24,7 +24,7 @@ export default function About() {
   };
 
   // Replace this with your actual birthday!
-  const myAge = getAge('2009`-03-25');
+  const myAge = getAge('2009-03-25');
 
   return (
     <section id="about" className="section-pad">
@@ -74,9 +74,10 @@ export default function About() {
               system-level Android development, full-stack web platforms, and IoT innovation.
             </p>
             <p className="bio-text-last">
-              From building NovaMesh (a system-level Android networking tool) to architecting
-              multi-device WhatsApp bots, I focus on creating tools that solve real problems
-              with clean code and innovative approaches.
+              From crafting NovaMesh to stabilize Android networking at the system level, to
+              designing full-stack platforms and IoT automation systems, I focus on solving
+              real problems with precise code, a performance-first mindset, and tools people
+              actually want to use.
             </p>
 
             {/* Stats grid */}
