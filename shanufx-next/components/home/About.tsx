@@ -11,6 +11,21 @@ export default function About() {
     { val: '5+', label: 'Languages' },
   ];
 
+  // Calculate age dynamically
+  const getAge = (birthDate: string) => {
+    const today = new Date();
+    const birthDateObj = new Date(birthDate);
+    let age = today.getFullYear() - birthDateObj.getFullYear();
+    const m = today.getMonth() - birthDateObj.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDateObj.getDate())) {
+      age--;
+    }
+    return age;
+  };
+
+  // Replace this with your actual birthday!
+  const myAge = getAge('2009`-03-25');
+
   return (
     <section id="about" className="section-pad">
       <div className="container-1100">
@@ -55,7 +70,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <p className="bio-text">
-              I&apos;m a 17-year-old self-taught developer from Sri Lanka with a deep passion for
+              I&apos;m a {myAge}-year-old self-taught developer from Sri Lanka with a deep passion for
               system-level Android development, full-stack web platforms, and IoT innovation.
             </p>
             <p className="bio-text-last">

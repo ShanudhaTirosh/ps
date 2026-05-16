@@ -135,8 +135,9 @@ export default function Navbar() {
         style={{
           position: 'fixed',
           top: scrolled ? '1.5rem' : '0',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          left: 0,
+          right: 0,
+          margin: '0 auto',
           width: scrolled ? 'calc(100% - 3rem)' : '100%',
           maxWidth: scrolled ? '900px' : '100%',
           zIndex: 100,
