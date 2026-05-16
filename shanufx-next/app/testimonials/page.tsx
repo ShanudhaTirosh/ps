@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ShanuFx Testimonials',
     description: 'Community feedback and testimonials for ShanuFx.',
-    images: [{ url: '/assets/img/og-index.jpg' }],
+    images: [{ url: '/assets/img/og-index.webp' }],
   },
 };
 

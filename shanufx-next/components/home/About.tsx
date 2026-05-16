@@ -38,7 +38,7 @@ export default function About() {
           >
             <div className="profile-frame">
               <Image
-                src="/assets/img/profile.jpg"
+                src="/assets/img/profile.webp"
                 alt="Shanudha Tirosh"
                 width={350}
                 height={350}

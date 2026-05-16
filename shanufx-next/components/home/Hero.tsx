@@ -76,7 +76,7 @@ export default function Hero() {
           <div className="hero-circle-wrap">
             <div className="hero-img-inner">
               <Image 
-                src="/assets/img/profile.jpg" 
+                src="/assets/img/profile.webp" 
                 alt="ShanuFx Profile" 
                 fill 
                 style={{ objectFit: 'cover' }} 

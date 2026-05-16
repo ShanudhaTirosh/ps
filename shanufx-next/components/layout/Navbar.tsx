@@ -133,13 +133,21 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
         style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-          padding: '0.75rem 1.5rem',
-          background: scrolled ? 'rgba(4,4,10,0.88)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-          transition: 'all 0.35s ease',
+          position: 'fixed',
+          top: scrolled ? '1.5rem' : '0',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: scrolled ? 'calc(100% - 3rem)' : '100%',
+          maxWidth: scrolled ? '900px' : '100%',
+          zIndex: 100,
+          padding: scrolled ? '0.5rem 1.5rem' : '1rem 1.5rem',
+          background: scrolled ? 'rgba(15, 12, 41, 0.75)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px) saturate(150%)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(150%)' : 'none',
+          border: scrolled ? '1px solid rgba(255,255,255,0.1)' : '1px solid transparent',
+          borderRadius: scrolled ? '50px' : '0px',
+          boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.3)' : 'none',
+          transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       >
         <nav className="nav-container">
