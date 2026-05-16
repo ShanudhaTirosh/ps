@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter - Shanudha Tirosh (ShanuFx)</title>
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            /* Background and text color are handled by Tailwind classes on body */
+            line-height: 1.6;
+        }
+
+         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
+ .text-gradient {
+ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
+ -webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+ background-clip: text;
+ text-fill-color: transparent;
+ }
+        .section-divider {
+ height: 2px;
+ background: linear-gradient(90deg, #ff416c, #ff4b2b);
+ width: 80px;
+ margin: 1rem auto 2rem auto; /* Centered divider */
+ }
+
+        /* Optional: Custom styles if needed */
+        *, *::before, *::after {
+             box-sizing: border-box;
+        }
+
+         /* Hide number input arrows */
+         input[type=number]::-webkit-inner-spin-button,
+         input[type=number]::-webkit-outer-spin-button {
+             -webkit-appearance: none;
+             margin: 0;
+         }
+         input[type=number] {
+             -moz-appearance: textfield;
+         }
+
+
+    </style>
+
+    <!-- ===== BRANDING & SEO ===== -->
+    <meta name="description" content="A premium utility tool developed by Shanudha Tirosh (ShanuFx). Explore more high-performance tools on the official portfolio." />
+    <meta name="keywords" content="Shanudha Tirosh, ShanuFx, HTML Utility, Web Tool, Full-stack Engineering, Sri Lanka Tech" />
+    <meta name="author" content="Shanudha Tirosh" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#04040a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ShanuFx Innovations" />
+    <meta property="og:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ShanuFx" />
+    <meta name="twitter:image" content="https://shanudhatirosh.github.io/assets/shanufx_logo.png" />
+    <meta property="og:title" content="Unit Converter | ShanuFx" />
+    <meta property="og:description" content="Unit Converter â€” a premium utility by Shanudha Tirosh (ShanuFx). Part of the ShanuFx Innovations portfolio." />
+    <meta property="og:url" content="https://shanudhatirosh.github.io/projects_sub/unit-converter" />
+    <meta name="twitter:title" content="Unit Converter | ShanuFx" />
+    <meta name="twitter:description" content="Unit Converter â€” built by Shanudha Tirosh. Explore the full portfolio at ShanuFx Innovations." />
+</head>
+<body class="bg-darkbg text-lighttext">
+
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main class="py-16 pt-28 flex justify-center items-center min-h-screen"> <section id="unit-converter-project" class="container mx-auto px-6 max-w-6xl flex justify-center items-center">
+            <div class="w-full max-w-md" data-aos="zoom-in" data-aos-delay="200"> <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2" data-aos="fade-up">Unit Converter</h2> <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-center text-gray-400 mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="150">Convert values between different units of measurement.</p>
+
+                <div class="converter-container bg-cardbg rounded-lg shadow-xl border border-primary/20 p-6">
+
+                    <div class="input-group mb-6">
+                        <label for="unitTypeSelect" class="block mb-2 text-lighttext font-medium">Select Unit Type:</label>
+                        <select id="unitTypeSelect"
+                                class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="temperature">Temperature</option>
+                            <option value="length">Length</option>
+                            <option value="mass">Mass</option>
+                            <option value="volume">Volume</option>
+                            <option value="area">Area</option>
+                             <option value="speed">Speed</option> {/* Added Speed */}
+                            </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label for="fromValueInput" class="block mb-2 text-lighttext font-medium">From Value:</label>
+                            <input type="number" id="fromValueInput" placeholder="Enter value" step="any"
+                                   class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary placeholder-gray-500">
+                        </div>
+                        <div>
+                            <label for="fromUnitSelect" class="block mb-2 text-lighttext font-medium">From Unit:</label>
+                            <select id="fromUnitSelect"
+                                    class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                                </select>
+                        </div>
+                    </div>
+
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label for="toValueInput" class="block mb-2 text-lighttext font-medium">To Value:</label>
+                            <input type="number" id="toValueInput" placeholder="Converted value" step="any" readonly
+                                   class="w-full px-4 py-2 bg-gray-800 text-gray-400 border border-gray-600 rounded-md cursor-not-allowed">
+                        </div>
+                         <div>
+                            <label for="toUnitSelect" class="block mb-2 text-lighttext font-medium">To Unit:</label>
+                            <select id="toUnitSelect"
+                                    class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                                </select>
+                        </div>
+                    </div>
+
+                    <div class="button-group flex justify-center mt-6">
+                         <button id="clearBtn" class="px-6 py-2 bg-gray-700 text-lighttext font-semibold rounded-md hover:bg-gray-600 transition duration-300 border border-gray-600">Clear</button>
+                    </div>
+
+                     <div id="errorDisplay" class="text-primary text-center mt-4 text-sm font-medium hidden"></div> 
+
+                </div>
+            </div>
+         </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+             duration: 800, // Shorter duration for faster feel
+ once: false, // Allow animation on scroll up/down
+ offset: 50, // Trigger animations slightly sooner
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Note: Typing effect script from index.html is not needed here.
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const unitTypeSelect = document.getElementById('unitTypeSelect');
+            const fromValueInput = document.getElementById('fromValueInput');
+            const fromUnitSelect = document.getElementById('fromUnitSelect');
+            const toValueInput = document.getElementById('toValueInput');
+            const toUnitSelect = document.getElementById('toUnitSelect');
+            const clearBtn = document.getElementById('clearBtn');
+            const errorDisplayDiv = document.getElementById('errorDisplay');
+
+
+            // Define Conversion Factors and Units
+            // Structure: unitType -> baseUnit -> { unitName: { toBase: func, fromBase: func, display: "Unit Symbol" } }
+            const conversions = {
+                'temperature': {
+                    baseUnit: 'kelvin',
+                    units: {
+                        'celsius': { toBase: (c) => parseFloat(c) + 273.15, fromBase: (k) => parseFloat(k) - 273.15, display: '°C' },
+                        'fahrenheit': { toBase: (f) => (parseFloat(f) - 32) * 5/9 + 273.15, fromBase: (k) => (parseFloat(k) - 273.15) * 9/5 + 32, display: '°F' },
+                        'kelvin': { toBase: (k) => parseFloat(k), fromBase: (k) => parseFloat(k), display: 'K' }
+                    }
+                },
+                'length': {
+                    baseUnit: 'meter',
+                    units: {
+                        'meter': { toBase: (m) => parseFloat(m), fromBase: (m) => parseFloat(m), display: 'm' },
+                        'kilometer': { toBase: (km) => parseFloat(km) * 1000, fromBase: (m) => parseFloat(m) / 1000, display: 'km' },
+                        'centimeter': { toBase: (cm) => parseFloat(cm) / 100, fromBase: (m) => parseFloat(m) * 100, display: 'cm' },
+                        'millimeter': { toBase: (mm) => parseFloat(mm) / 1000, fromBase: (m) => parseFloat(m) * 1000, display: 'mm' },
+                        'mile': { toBase: (mi) => parseFloat(mi) * 1609.34, fromBase: (m) => parseFloat(m) / 1609.34, display: 'mi' },
+                        'yard': { toBase: (yd) => parseFloat(yd) * 0.9144, fromBase: (m) => parseFloat(m) / 0.9144, display: 'yd' },
+                        'foot': { toBase: (ft) => parseFloat(ft) * 0.3048, fromBase: (m) => parseFloat(m) / 0.3048, display: 'ft' },
+                        'inch': { toBase: (inch) => parseFloat(inch) * 0.0254, fromBase: (m) => parseFloat(m) / 0.0254, display: 'in' }
+                        // Add more units
+                    }
+                },
+                 'mass': { // Includes Weight-related units
+                    baseUnit: 'kilogram',
+                    units: {
+                        'kilogram': { toBase: (kg) => parseFloat(kg), fromBase: (kg) => parseFloat(kg), display: 'kg' },
+                        'gram': { toBase: (g) => parseFloat(g) / 1000, fromBase: (kg) => parseFloat(kg) * 1000, display: 'g' },
+                        'milligram': { toBase: (mg) => parseFloat(mg) / 1000000, fromBase: (kg) => parseFloat(kg) * 1000000, display: 'mg' },
+                        'pound': { toBase: (lb) => parseFloat(lb) * 0.453592, fromBase: (kg) => parseFloat(kg) / 0.453592, display: 'lb' },
+                        'ounce': { toBase: (oz) => parseFloat(oz) * 0.0283495, fromBase: (kg) => parseFloat(kg) / 0.0283495, display: 'oz' },
+                        'tonne': { toBase: (t) => parseFloat(t) * 1000, fromBase: (kg) => parseFloat(kg) / 1000, display: 'tonne' },
+                         'stone': { toBase: (st) => parseFloat(st) * 6.35029, fromBase: (kg) => parseFloat(kg) / 6.35029, display: 'stone' } // Added stone
+                        // Add more units
+                    }
+                },
+                 'volume': {
+                    baseUnit: 'cubic-meter', // m³
+                    units: {
+                        'cubic-meter': { toBase: (m3) => parseFloat(m3), fromBase: (m3) => parseFloat(m3), display: 'm³' },
+                        'liter': { toBase: (l) => parseFloat(l) / 1000, fromBase: (m3) => parseFloat(m3) * 1000, display: 'L' },
+                        'milliliter': { toBase: (ml) => parseFloat(ml) / 1000000, fromBase: (m3) => parseFloat(m3) * 1000000, display: 'mL' },
+                        'gallon-us': { toBase: (gal) => parseFloat(gal) * 0.00378541, fromBase: (m3) => parseFloat(m3) / 0.00378541, display: 'US gal' },
+                        'gallon-uk': { toBase: (gal) => parseFloat(gal) * 0.00454609, fromBase: (m3) => parseFloat(m3) / 0.00454609, display: 'UK gal' },
+                        'cubic-foot': { toBase: (ft3) => parseFloat(ft3) * 0.0283168, fromBase: (m3) => parseFloat(m3) / 0.0283168, display: 'ft³' },
+                        'cubic-inch': { toBase: (in3) => parseFloat(in3) * 0.0000163871, fromBase: (m3) => parseFloat(m3) / 0.0000163871, display: 'in³' }
+                         // Add more units
+                    }
+                },
+                 'area': {
+                    baseUnit: 'square-meter', // m²
+                    units: {
+                        'square-meter': { toBase: (m2) => parseFloat(m2), fromBase: (m2) => parseFloat(m2), display: 'm²' },
+                        'square-kilometer': { toBase: (km2) => parseFloat(km2) * 1000000, fromBase: (m2) => parseFloat(m2) / 1000000, display: 'km²' },
+                        'square-centimeter': { toBase: (cm2) => parseFloat(cm2) / 10000, fromBase: (m2) => parseFloat(m2) * 10000, display: 'cm²' },
+                        'square-mile': { toBase: (mi2) => parseFloat(mi2) * 2589988, fromBase: (m2) => parseFloat(m2) / 2589988, display: 'mi²' },
+                        'acre': { toBase: (acre) => parseFloat(acre) * 4046.86, fromBase: (m2) => parseFloat(m2) / 4046.86, display: 'acre' },
+                        'hectare': { toBase: (ha) => parseFloat(ha) * 10000, fromBase: (m2) => parseFloat(m2) / 10000, display: 'ha' },
+                        'square-foot': { toBase: (ft2) => parseFloat(ft2) * 0.092903, fromBase: (m2) => parseFloat(m2) / 0.092903, display: 'ft²' },
+                        'square-inch': { toBase: (in2) => parseFloat(in2) * 0.00064516, fromBase: (m2) => parseFloat(m2) / 0.00064516, display: 'in²' }
+                         // Add more units
+                    }
+                },
+                 'speed': {
+                    baseUnit: 'meters-per-second', // m/s
+                    units: {
+                        'meters-per-second': { toBase: (mps) => parseFloat(mps), fromBase: (mps) => parseFloat(mps), display: 'm/s' },
+                        'kilometers-per-hour': { toBase: (kph) => parseFloat(kph) / 3.6, fromBase: (mps) => parseFloat(mps) * 3.6, display: 'km/h' },
+                        'miles-per-hour': { toBase: (mph) => parseFloat(mph) / 2.23694, fromBase: (mps) => parseFloat(mps) * 2.23694, display: 'mph' },
+                        'knot': { toBase: (kt) => parseFloat(kt) * 0.514444, fromBase: (mps) => parseFloat(mps) / 0.514444, display: 'kn' },
+                        'feet-per-second': { toBase: (fps) => parseFloat(fps) * 0.3048, fromBase: (mps) => parseFloat(mps) / 0.3048, display: 'ft/s' }
+                        // Add more units
+                    }
+                 }
+                // Add more unit types here with their base units and conversion functions
+            };
+
+
+            // --- Event Listeners ---
+            unitTypeSelect.addEventListener('change', updateUnitDropdowns);
+            fromValueInput.addEventListener('input', performConversion);
+            fromUnitSelect.addEventListener('change', performConversion);
+            toUnitSelect.addEventListener('change', performConversion);
+            clearBtn.addEventListener('click', clearInputs);
+
+
+            // --- Functions ---
+
+            function updateUnitDropdowns() {
+                const selectedUnitType = unitTypeSelect.value;
+                const unitsForType = conversions[selectedUnitType].units;
+
+                // Clear existing options
+                fromUnitSelect.innerHTML = '';
+                toUnitSelect.innerHTML = '';
+
+                // Populate dropdowns with units for the selected type
+                for (const unitKey in unitsForType) {
+                    const unitDetails = unitsForType[unitKey];
+                    const optionFrom = document.createElement('option');
+                    const optionTo = document.createElement('option');
+
+                    optionFrom.value = unitKey;
+                    optionFrom.textContent = unitDetails.display || unitKey; // Use display name if available
+
+                    optionTo.value = unitKey;
+                    optionTo.textContent = unitDetails.display || unitKey; // Use display name if available
+
+                    fromUnitSelect.appendChild(optionFrom);
+                    toUnitSelect.appendChild(optionTo);
+                }
+
+                // Set default selections (optional, e.g., first two units or specific ones)
+                if (fromUnitSelect.options.length > 0) {
+                     fromUnitSelect.value = Object.keys(unitsForType)[0]; // Default to first unit
+                     if (toUnitSelect.options.length > 1) {
+                           toUnitSelect.value = Object.keys(unitsForType)[1]; // Default to second unit
+                     } else {
+                           toUnitSelect.value = Object.keys(unitsForType)[0]; // Or the same unit if only one
+                     }
+                }
+
+
+                // Clear inputs and results when unit type changes
+                clearInputs();
+            }
+
+            function performConversion() {
+                errorDisplayDiv.classList.add('hidden'); // Hide any previous errors
+                errorDisplayDiv.textContent = '';
+
+                const selectedUnitType = unitTypeSelect.value;
+                const fromUnitKey = fromUnitSelect.value;
+                const toUnitKey = toUnitSelect.value;
+                const fromValue = parseFloat(fromValueInput.value);
+
+                // Clear the toValueInput if the fromValue is empty or invalid
+                if (fromValueInput.value.trim() === '' || isNaN(fromValue)) {
+                    toValueInput.value = '';
+                    return; // Stop if input is invalid or empty
+                }
+
+                // Get conversion functions
+                const unitTypeConversions = conversions[selectedUnitType].units;
+                const fromUnit = unitTypeConversions[fromUnitKey];
+                const toUnit = unitTypeConversions[toUnitKey];
+
+                // Check if conversion functions exist (should exist if dropdowns are populated correctly)
+                if (!fromUnit || !toUnit || typeof fromUnit.toBase !== 'function' || typeof toUnit.fromBase !== 'function') {
+                    errorDisplayDiv.textContent = 'Error: Invalid unit selection.';
+                    errorDisplayDiv.classList.remove('hidden');
+                    toValueInput.value = '';
+                    return;
+                }
+
+                try {
+                    // Step 1: Convert From Value to Base Unit
+                    const valueInBase = fromUnit.toBase(fromValue);
+
+                    // Step 2: Convert Base Unit value to To Unit
+                    const convertedValue = toUnit.fromBase(valueInBase);
+
+                    // Display the converted value
+                    if (isNaN(convertedValue) || !isFinite(convertedValue)) {
+                         toValueInput.value = 'Error';
+                         errorDisplayDiv.textContent = 'Calculation error.';
+                         errorDisplayDiv.classList.remove('hidden');
+                    } else {
+                         // Format to a reasonable number of decimal places, remove trailing zeros
+                         const formattedValue = parseFloat(convertedValue.toFixed(10)).toString(); // Increased precision slightly
+                         toValueInput.value = formattedValue;
+                    }
+
+                } catch (e) {
+                    errorDisplayDiv.textContent = 'An error occurred during conversion.';
+                    errorDisplayDiv.classList.remove('hidden');
+                    toValueInput.value = 'Error';
+                    console.error("Conversion Error:", e);
+                }
+            }
+
+            function clearInputs() {
+                fromValueInput.value = '';
+                toValueInput.value = '';
+                errorDisplayDiv.classList.add('hidden'); // Hide error
+                errorDisplayDiv.textContent = '';
+                // Reset dropdowns based on current unit type selection
+                // updateUnitDropdowns(); // Re-populate dropdowns and set defaults - not needed on clear unless unit type also changes
+            }
+
+            // --- Initialization ---
+            // Populate unit dropdowns based on the default selected unit type
+            updateUnitDropdowns();
+        });
+    </script>
+    <footer id="main-footer" style="background:#04040a;border-top:1px solid rgba(255,255,255,0.06);padding:2.5rem 1.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#4b5563;" role="contentinfo"><div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem;"><a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;"><div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:0.75rem;">S</div><span style="color:#f1f0f7;font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;">ShanuFx</span></a><div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Home</a><a href="/showcase" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">Showcase</a><a href="https://github.com/ShanudhaTirosh" target="_blank" rel="noopener" style="color:#4b5563;text-decoration:none;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">GitHub</a></div><p style="margin:0;">Â© 2026 <span style="color:#7c3aed;">Shanudha Tirosh</span> (ShanuFx)</p></div></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="/" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="/showcase" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Showcase</a>
+    </div>
+    <script>
+        loadHeader('../');
+        loadFooter('../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+    </script>
+
+    <!-- ===== BACK TO SHOWCASE BUTTON ===== -->
+    <a href="/showcase" id="back-to-showcase"
+       style="
+           position:fixed;
+           bottom:1.75rem;
+           right:1.75rem;
+           z-index:9999;
+           display:inline-flex;
+           align-items:center;
+           gap:0.5rem;
+           padding:0.65rem 1.25rem;
+           border-radius:50px;
+           background:linear-gradient(135deg,#7c3aed,#06b6d4);
+           color:#fff;
+           font-family:'JetBrains Mono',monospace;
+           font-size:0.75rem;
+           font-weight:700;
+           letter-spacing:0.04em;
+           text-decoration:none;
+           box-shadow:0 4px 24px rgba(124,58,237,0.45);
+           transition:transform 0.2s,box-shadow 0.2s;
+       "
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(124,58,237,0.6)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(124,58,237,0.45)'"
+       aria-label="Back to ShanuFx Showcase">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Showcase
+    </a>
+    <!-- ===== BRANDING CONSOLE LOG ===== -->
+    <script>
+    (function() {
+        function logBranding() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    console.clear();
+                    console.log(
+                        "%cShanuFx",
+                        "color: #7c3aed; font-size: 50px; font-weight: bold; font-family: sans-serif; text-shadow: 3px 3px 0px rgba(124, 58, 237, 0.2);"
+                    );
+                    console.log(
+                        "%câš  If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh",
+                        "color: #f59e0b; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                    console.log(
+                        %cðŸŒ Is that your IP: ,
+                        "color: #06b6d4; font-size: 14px; font-weight: bold; font-family: sans-serif;"
+                    );
+                })
+                .catch(() => {
+                    console.log("%cShanuFx", "color: #7c3aed; font-size: 50px; font-weight: bold;");
+                    console.log("%câš  If you are trying to sneak into this website, it's not possible. Designed and developed by Shanudha Tirosh", "color: #f59e0b; font-size: 14px; font-weight: bold;");
+                });
+        }
+        logBranding();
+        setInterval(logBranding, 30000);
+    })();
+    </script>
+</body>
+</html>

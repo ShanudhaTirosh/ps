@@ -1,0 +1,8 @@
+User-Agent: *
+Allow: /
+Allow: /showcase
+Allow: /testimonials
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://shanu-fx.web.app/sitemap.xml
