@@ -6,6 +6,8 @@ import RightClickProtector from '@/components/layout/RightClickProtector';
 import AdBlockDetector from '@/components/layout/AdBlockDetector';
 import ParticleCanvasWrapper from '@/components/layout/ParticleCanvasWrapper';
 import ConsoleWarning from '@/components/layout/ConsoleWarning';
+import JsonLd from '@/components/seo/JsonLd';
+
 export const metadata: Metadata = {
   title: {
     default: 'ShanuFx — Developer Portfolio',
@@ -14,15 +16,70 @@ export const metadata: Metadata = {
   description: 'Full-Stack Developer, Android Innovator & IoT Engineer from Sri Lanka. Building high-performance tools and platforms.',
   keywords: ['ShanuFx', 'Shanudha Tirosh', 'Developer Portfolio', 'Full-Stack', 'Android', 'IoT', 'React', 'Firebase'],
   authors: [{ name: 'Shanudha Tirosh' }],
-  metadataBase: new URL('https://shanudhatirosh.github.io'),
+  metadataBase: new URL('https://shanu-fx.web.app'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+      'si-LK': '/si-LK',
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'ShanuFx Portfolio',
-    images: [{ url: '/assets/og-image.webp', width: 1200, height: 630 }],
+    title: 'ShanuFx | Android & System Developer Portfolio',
+    description: 'Revolutionizing mobile networking and system performance. Developer of NovaMesh, NovaNetX, SocialGrab, Telegram Drive and more — IoT strategist from Sri Lanka.',
+    url: 'https://shanu-fx.web.app/',
+    emails: ['info.shanudhatirosh@gmail.com'],
+    countryName: 'Sri Lanka',
+    images: [
+      {
+        url: '/assets/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Shanudha Tirosh — ShanuFx Logo',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@ShanuFx',
+    creator: '@ShanuFx',
+    title: 'ShanuFx | Innovation & Mobile Systems',
+    description: 'Pushing the boundaries of Android System Internals and IoT automation. Developer of NovaMesh, NovaNetX, SocialGrab & SHANU-MD from Sri Lanka.',
+    images: ['/assets/og-image.webp'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'google674d98d6ab0d9910',
+  },
+  category: 'technology',
+  classification: 'Portfolio, Technology, Software Development',
+  creator: 'Shanudha Tirosh',
+  publisher: 'Netch Solutions',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  other: {
+    'geo.region': 'LK-11',
+    'geo.placename': 'Ambalangoda, Sri Lanka',
+    'geo.position': '6.2341;80.0523',
+    'ICBM': '6.2341, 80.0523',
+    'color-scheme': 'dark light',
+    'MobileOptimized': '375',
   },
   icons: {
     icon: [
@@ -60,6 +117,7 @@ export default function RootLayout({
           <RightClickProtector>
             <AdBlockDetector>
               <ConsoleWarning />
+              <JsonLd />
               <div className="bg-noise" />
               <div className="grid-bg" />
               <ParticleCanvasWrapper />
