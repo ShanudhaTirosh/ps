@@ -5,6 +5,7 @@ import { AuthProvider } from '@/lib/context/AuthContext';
 import RightClickProtector from '@/components/layout/RightClickProtector';
 import AdBlockDetector from '@/components/layout/AdBlockDetector';
 import ParticleCanvasWrapper from '@/components/layout/ParticleCanvasWrapper';
+import ConsoleWarning from '@/components/layout/ConsoleWarning';
 export const metadata: Metadata = {
   title: {
     default: 'ShanuFx — Developer Portfolio',
@@ -58,6 +59,7 @@ export default function RootLayout({
         <AuthProvider>
           <RightClickProtector>
             <AdBlockDetector>
+              <ConsoleWarning />
               <div className="bg-noise" />
               <div className="grid-bg" />
               <ParticleCanvasWrapper />
