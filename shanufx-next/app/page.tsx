@@ -9,6 +9,7 @@ import Testimonials from '@/components/home/Testimonials';
 import Innovations from '@/components/home/Innovations';
 import CTABanner from '@/components/home/CTABanner';
 import ContactForm from '@/components/home/ContactForm';
+import CommunityCTA from '@/components/home/CommunityCTA';
 
 export default function HomePage() {
   return (
@@ -23,6 +24,7 @@ export default function HomePage() {
         <Testimonials />
         <Innovations />
         <CTABanner />
+        <CommunityCTA />
         <ContactForm />
       </main>
       <Footer />

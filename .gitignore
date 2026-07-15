@@ -1,6 +1,7 @@
 # Secrets - NEVER commit
 .env
 .env.local
+*firebase-adminsdk*.json
 
 # Logs
 logs
@@ -11,10 +12,31 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies and Build Output
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+**/dist-ssr/
 *.local
+
+# Next.js and Vercel build folders
+.next/
+**/.next/
+out/
+**/out/
+.vercel/
+**/.vercel/
+
+# Firebase build/config folders
+.firebase/
+**/.firebase/
+firebase-debug.log*
+firestore-debug.log*
+pubsub-debug.log*
+ui-debug.log*
+firebase-export*
 
 # Editor directories and files
 .vscode/*

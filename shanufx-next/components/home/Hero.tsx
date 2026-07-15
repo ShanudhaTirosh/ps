@@ -28,7 +28,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="hero-content"
         >
-          <div className="hero-code-block" onClick={() => router.push('/admin')}>
+          <div className="hero-code-block" onClick={() => router.push('/admin/dashboard/')}>
             System.out.println(&quot;Hello, World!&quot;);
           </div>
 

@@ -1,0 +1,27 @@
+{
+  "rules": {
+    "presence": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid == $uid"
+      }
+    },
+    "channels": {
+      "$channelId": {
+        "messages": {
+          ".read": "auth != null",
+          ".write": "auth != null",
+          "$msgId": {
+            ".validate": "newData.hasChildren(['authorUid','authorName','text','createdAt'])"
+          }
+        },
+        "typing": {
+          ".read": "auth != null",
+          "$uid": {
+            ".write": "auth != null && auth.uid == $uid"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /showcase
+Allow: /testimonials
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://info.shanutechx.com/sitemap.xml

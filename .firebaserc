@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "shanu-fx"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }

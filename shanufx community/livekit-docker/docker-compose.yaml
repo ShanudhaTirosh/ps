@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  livekit:
+    image: livekit/livekit-server:latest
+    container_name: livekit-server
+    command: --config /etc/livekit.yaml
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /opt/livekit/livekit.yaml:/etc/livekit.yaml
+    environment:
+      - LIVEKIT_API_KEY=devkey
+      - LIVEKIT_API_SECRET=4fa01ac264543e105e6777719a3f80cd

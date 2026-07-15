@@ -1,0 +1,12 @@
+port: 7800
+bind_addresses:
+  - ""
+rtc:
+  tcp_port: 7801
+  port_range_start: 50000
+  port_range_end: 60000
+  use_external_ip: true
+keys:
+  devkey: 4fa01ac264543e105e6777719a3f80cd
+logging:
+  level: info

@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavLink {
   label: string;
-  type: 'hash' | 'route';
+  type: 'hash' | 'route' | 'external';
   sectionId?: string;
   to?: string;
 }
@@ -72,6 +72,7 @@ export default function Navbar() {
     { label: 'Showcase',    type: 'route', to: '/showcase' },
     { label: 'Feedback',    type: 'route', to: '/testimonials' },
     { label: 'Contact',     type: 'hash',  sectionId: 'contact' },
+    { label: 'Community',   type: 'external', to: 'https://community.shanutechx.com' },
   ];
 
   const renderLink = (l: NavLink, extraClass = 'nav-link') => {
@@ -94,6 +95,21 @@ export default function Navbar() {
 
     const className = `${extraClass} ${isActive ? 'active' : ''}`;
 
+    if (l.type === 'external') {
+      return (
+        <a
+          key={l.label}
+          href={l.to!}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${extraClass} community-nav-link`}
+        >
+          <i className="fas fa-users" style={{ fontSize: '0.78rem' }} />
+          {l.label}
+          <span className="nav-live-dot" />
+        </a>
+      );
+    }
     if (l.type === 'hash') {
       return (
         <a
@@ -382,6 +398,26 @@ export default function Navbar() {
           font-size: 0.95rem !important;
           padding: 0.8rem 2.5rem !important;
         }
+        .community-nav-link {
+          display: flex !important;
+          align-items: center;
+          gap: 0.35rem;
+          color: #06b6d4 !important;
+          font-family: 'Syne', sans-serif;
+          font-size: 0.88rem;
+          font-weight: 600;
+          text-decoration: none;
+          transition: color 0.2s;
+        }
+        .community-nav-link:hover { color: #22d3ee !important; }
+        .nav-live-dot {
+          width: 6px; height: 6px; border-radius: 50%;
+          background: #10b981;
+          box-shadow: 0 0 6px #10b981;
+          animation: pulse 2s infinite;
+          flex-shrink: 0;
+        }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }

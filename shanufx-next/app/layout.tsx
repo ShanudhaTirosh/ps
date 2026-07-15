@@ -7,6 +7,7 @@ import AdBlockDetector from '@/components/layout/AdBlockDetector';
 import ParticleCanvasWrapper from '@/components/layout/ParticleCanvasWrapper';
 import ConsoleWarning from '@/components/layout/ConsoleWarning';
 import JsonLd from '@/components/seo/JsonLd';
+import MaintenanceGuard from '@/components/layout/MaintenanceGuard';
 
 export const metadata: Metadata = {
   title: {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   description: 'Full-Stack Developer, Android Innovator & IoT Engineer from Sri Lanka. Building high-performance tools and platforms.',
   keywords: ['ShanuFx', 'Shanudha Tirosh', 'Developer Portfolio', 'Full-Stack', 'Android', 'IoT', 'React', 'Firebase'],
   authors: [{ name: 'Shanudha Tirosh' }],
-  metadataBase: new URL('https://shanu-fx.web.app'),
+  metadataBase: new URL('https://info.shanutechx.com'),
   alternates: {
     canonical: '/',
     languages: {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     siteName: 'ShanuFx Portfolio',
     title: 'ShanuFx | Android & System Developer Portfolio',
     description: 'Revolutionizing mobile networking and system performance. Developer of NovaMesh, NovaNetX, SocialGrab, Telegram Drive and more — IoT strategist from Sri Lanka.',
-    url: 'https://shanu-fx.web.app/',
+    url: 'https://info.shanutechx.com/',
     emails: ['info.shanudhatirosh@gmail.com'],
     countryName: 'Sri Lanka',
     images: [
@@ -114,16 +115,18 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         <AuthProvider>
-          <RightClickProtector>
-            <AdBlockDetector>
-              <ConsoleWarning />
-              <JsonLd />
-              <div className="bg-noise" />
-              <div className="grid-bg" />
-              <ParticleCanvasWrapper />
-              {children}
-            </AdBlockDetector>
-          </RightClickProtector>
+          <MaintenanceGuard>
+            <RightClickProtector>
+              <AdBlockDetector>
+                <ConsoleWarning />
+                <JsonLd />
+                <div className="bg-noise" />
+                <div className="grid-bg" />
+                <ParticleCanvasWrapper />
+                {children}
+              </AdBlockDetector>
+            </RightClickProtector>
+          </MaintenanceGuard>
         </AuthProvider>
       </body>
     </html>
