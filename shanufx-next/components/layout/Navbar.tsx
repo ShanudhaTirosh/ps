@@ -155,7 +155,7 @@ export default function Navbar() {
           right: 0,
           margin: '0 auto',
           width: scrolled ? 'calc(100% - 3rem)' : '100%',
-          maxWidth: scrolled ? '900px' : '100%',
+          maxWidth: scrolled ? '1200px' : '100%',
           zIndex: 100,
           padding: scrolled ? '0.5rem 1.5rem' : '1rem 1.5rem',
           background: scrolled ? 'rgba(15, 12, 41, 0.75)' : 'transparent',
@@ -418,6 +418,11 @@ export default function Navbar() {
           flex-shrink: 0;
         }
         @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+        @media (max-width: 1100px) {
+          .desktop-nav-list { gap: 1rem; }
+          .nav-link { font-size: 0.82rem; }
+          .community-nav-link { font-size: 0.82rem; }
+        }
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
