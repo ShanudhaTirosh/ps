@@ -25,7 +25,7 @@ export default function ConsoleWarning() {
 
     const logWarning = () => {
       // CSS styles for the console logs
-      const shanuFxStyle = `
+      const shanuTechXStyle = `
         font-size: 50px;
         font-weight: 900;
         color: #8b5cf6;
@@ -50,7 +50,7 @@ export default function ConsoleWarning() {
       // Draw a line before the warning to separate it visually
       console.log('%c───────────────────────────────────────────────────────', 'color: #333');
       
-      console.log('%cShanuFx', shanuFxStyle);
+      console.log('%cSHANUTECHX', shanuTechXStyle);
       
       console.log('%c───────────────────────────────────────────────────────', 'color: #333');
       

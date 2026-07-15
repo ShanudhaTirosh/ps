@@ -11,11 +11,11 @@ import MaintenanceGuard from '@/components/layout/MaintenanceGuard';
 
 export const metadata: Metadata = {
   title: {
-    default: 'ShanuFx — Developer Portfolio',
-    template: '%s | ShanuFx',
+    default: 'Shanudha Tirosh | SHANUTECHX — Developer Portfolio',
+    template: '%s | SHANUTECHX',
   },
-  description: 'Full-Stack Developer, Android Innovator & IoT Engineer from Sri Lanka. Building high-performance tools and platforms.',
-  keywords: ['ShanuFx', 'Shanudha Tirosh', 'Developer Portfolio', 'Full-Stack', 'Android', 'IoT', 'React', 'Firebase'],
+  description: 'Full-Stack WEB & DESKTOP Developer, Android System Innovator & IoT Engineer from Sri Lanka. Portfolio of Shanudha Tirosh (SHANUTECHX / SHANUFX).',
+  keywords: ['SHANUTECHX', 'SHANUFX', 'ShanuFx', 'Shanudha Tirosh', 'Developer Portfolio', 'Full-Stack', 'Android', 'IoT', 'React', 'Firebase'],
   authors: [{ name: 'Shanudha Tirosh' }],
   metadataBase: new URL('https://info.shanutechx.com'),
   alternates: {
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'ShanuFx Portfolio',
-    title: 'ShanuFx | Android & System Developer Portfolio',
-    description: 'Revolutionizing mobile networking and system performance. Developer of NovaMesh, NovaNetX, SocialGrab, Telegram Drive and more — IoT strategist from Sri Lanka.',
+    siteName: 'SHANUTECHX Portfolio',
+    title: 'Shanudha Tirosh | SHANUTECHX — WEB & DESKTOP Developer, Android & System Developer Portfolio',
+    description: 'Revolutionizing mobile networking and system performance. Portfolio of Shanudha Tirosh, developer of NovaMesh, NovaNetX, SocialGrab, Telegram Drive — under SHANUTECHX and SHANUFX.',
     url: 'https://info.shanutechx.com/',
     emails: ['info.shanudhatirosh@gmail.com'],
     countryName: 'Sri Lanka',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: '/assets/og-image.webp',
         width: 1200,
         height: 630,
-        alt: 'Shanudha Tirosh — ShanuFx Logo',
+        alt: 'Shanudha Tirosh — SHANUTECHX Logo',
       },
     ],
   },
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@ShanuFx',
     creator: '@ShanuFx',
-    title: 'ShanuFx | Innovation & Mobile Systems',
-    description: 'Pushing the boundaries of Android System Internals and IoT automation. Developer of NovaMesh, NovaNetX, SocialGrab & SHANU-MD from Sri Lanka.',
+    title: 'Shanudha Tirosh | SHANUTECHX — WEB & DESKTOP Developer, Android & System Developer Portfolio',
+    description: 'Pushing the boundaries of Android System Internals and IoT automation. Projects by Shanudha Tirosh (SHANUTECHX / SHANUFX) from Sri Lanka.',
     images: ['/assets/og-image.webp'],
   },
   robots: {
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   category: 'technology',
   classification: 'Portfolio, Technology, Software Development',
   creator: 'Shanudha Tirosh',
-  publisher: 'Netch Solutions',
+  publisher: 'Netch Solutions and Web Designer and Developer and Android System Innovator & IoT Engineer',
   formatDetection: {
     email: false,
     address: false,

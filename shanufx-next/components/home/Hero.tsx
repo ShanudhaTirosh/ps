@@ -34,7 +34,7 @@ export default function Hero() {
 
           <h1 className="hero-title-large">
             I am <br />
-            <span className="text-gradient">ShanuFx</span>
+            <span className="text-gradient">Shanudha</span>
           </h1>
 
           <div className="hero-typing-wrap">

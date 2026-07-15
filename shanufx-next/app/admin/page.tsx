@@ -32,7 +32,7 @@ export default function AdminLoginPage() {
     <div className="auth-screen">
       <div className="auth-card">
         <div className="auth-logo">S</div>
-        <h1>ShanuFx Admin</h1>
+        <h1>SHANUTECHX Admin</h1>
         <p>Portfolio Content Management System</p>
         <p className="auth-version">v2.0 — Firebase Powered</p>
 

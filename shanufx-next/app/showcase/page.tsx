@@ -5,10 +5,10 @@ import ShowcaseClient from '@/components/showcase/ShowcaseClient';
 
 export const metadata: Metadata = {
   title: 'Showcase',
-  description: 'Browse the full collection of ShanuFx projects — Android tools, web platforms, IoT solutions, and more.',
+  description: 'Browse the full collection of SHANUTECHX projects — Android tools, web platforms, IoT solutions, and more by Shanudha Tirosh.',
   openGraph: {
-    title: 'ShanuFx Showcase',
-    description: 'A curated collection of projects spanning Android, IoT, full-stack, and bot development.',
+    title: 'SHANUTECHX Showcase | Shanudha Tirosh',
+    description: 'A curated collection of projects by Shanudha Tirosh spanning Android, IoT, full-stack, and bot development under SHANUTECHX and SHANUFX.',
     images: [{ url: '/assets/img/og-showcase.webp' }],
   },
 };

@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         <p className="footer-copy">
-          © {new Date().getFullYear()} ShanuFx. Built with React + Firebase
+          © {new Date().getFullYear()} SHANUTECHX (Shanudha Tirosh). All rights reserved.
         </p>
       </div>
     </footer>

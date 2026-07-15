@@ -22,7 +22,7 @@ export default function Innovations() {
         >
           <span className="badge badge-purple">Featured Work</span>
           <h2 className="section-title">
-            ShanuFx <span className="text-gradient">Innovations</span>
+            SHANUTECHX <span className="text-gradient">Innovations</span>
           </h2>
           <div className="section-divider" />
           <p className="section-subtitle">

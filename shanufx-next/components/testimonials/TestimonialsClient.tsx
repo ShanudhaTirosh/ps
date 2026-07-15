@@ -77,7 +77,7 @@ export default function TestimonialsClient() {
               </div>
               <div className="form-group-lg">
                 <label className="form-label">YOUR TESTIMONIAL</label>
-                <textarea className="form-input form-textarea-sm" placeholder="How was your experience working with ShanuFx?" required rows={5} value={form.text} onChange={e => setForm({ ...form, text: e.target.value })} />
+                <textarea className="form-input form-textarea-sm" placeholder="How was your experience working with Shanudha Tirosh (SHANUTECHX)?" required rows={5} value={form.text} onChange={e => setForm({ ...form, text: e.target.value })} />
               </div>
               <button type="submit" className="btn-primary btn-full" disabled={status === 'submitting'}>
                 {status === 'submitting' ? 'Submitting...' : status === 'ok' ? 'Submitted!' : 'Submit Testimonial'}

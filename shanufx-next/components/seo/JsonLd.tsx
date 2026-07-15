@@ -6,10 +6,10 @@ export default function JsonLd() {
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'ShanuFx Portfolio',
-      alternateName: 'Shanudha Tirosh Portfolio',
+      name: 'SHANUTECHX Portfolio',
+      alternateName: 'Shanudha Tirosh (SHANUTECHX / SHANUFX) Portfolio',
       url: 'https://info.shanutechx.com/',
-      description: 'Official portfolio of Shanudha Tirosh (ShanuFx) — Android System Developer & IoT Engineer from Sri Lanka.',
+      description: 'Official portfolio of Shanudha Tirosh under his main brand SHANUTECHX (also known as ShanuFx / SHANUFX) — Android System Developer & IoT Engineer from Sri Lanka.',
       inLanguage: 'en',
       potentialAction: {
         '@type': 'SearchAction',
@@ -25,7 +25,7 @@ export default function JsonLd() {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Shanudha Tirosh',
-      alternateName: 'ShanuFx',
+      alternateName: ['SHANUTECHX', 'SHANUFX', 'ShanuFx'],
       url: 'https://info.shanutechx.com/',
       image: {
         '@type': 'ImageObject',
@@ -68,8 +68,8 @@ export default function JsonLd() {
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'Netch Solutions',
-      alternateName: ['ShanuFx', 'ShanudhaTirosh'],
+      name: 'SHANUTECHX',
+      alternateName: ['SHANUFX', 'ShanuFx', 'Shanudha Tirosh', 'Netch Solutions'],
       url: 'https://info.shanutechx.com/',
       logo: {
         '@type': 'ImageObject',
@@ -126,20 +126,20 @@ export default function JsonLd() {
     {
       '@context': 'https://schema.org',
       '@type': 'ProfilePage',
-      name: 'ShanuFx | Shanudha Tirosh – Developer Portfolio',
+      name: 'Shanudha Tirosh | SHANUTECHX – Developer Portfolio',
       url: 'https://info.shanutechx.com/',
       dateCreated: '2023-01-01T00:00:00+05:30',
       dateModified: new Date().toISOString(),
       inLanguage: 'en',
       isPartOf: {
         '@type': 'WebSite',
-        name: 'ShanuFx Portfolio',
+        name: 'SHANUTECHX Portfolio',
         url: 'https://info.shanutechx.com/',
       },
       mainEntity: {
         '@type': 'Person',
         name: 'Shanudha Tirosh',
-        alternateName: 'ShanuFx',
+        alternateName: ['SHANUTECHX', 'SHANUFX', 'ShanuFx'],
         url: 'https://info.shanutechx.com/',
         jobTitle: 'Android System Developer & IoT Engineer',
         worksFor: {

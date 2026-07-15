@@ -38,7 +38,7 @@ export default function About() {
         >
           <span className="badge badge-purple">About Me</span>
           <h2 className="section-title">
-            Who is <span className="text-gradient">ShanuFx</span>?
+            Who is <span className="text-gradient">Shanudha</span>?
           </h2>
           <div className="section-divider" />
         </motion.div>

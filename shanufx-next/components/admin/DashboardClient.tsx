@@ -414,7 +414,7 @@ export default function DashboardClient() {
       { title: 'IoT & Hardware Integration', icon: 'fas fa-microchip', color: '#f472b6', desc: 'Developing smart hardware solutions using ESP8266/ESP32, C++, and IoT cloud platforms like Blynk for real-time monitoring and control.', order: 3 }
     ];
     const defaultTests = [
-      { name: 'Alex Mercer', role: 'Tech Lead at CyberNova', text: 'ShanuFx completely revolutionized our mobile networking stack. NovaMesh provided stability we didn\'t think was possible on standard consumer hardware. Exceptional talent.', avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d' },
+      { name: 'Alex Mercer', role: 'Tech Lead at CyberNova', text: 'SHANUTECHX completely revolutionized our mobile networking stack. NovaMesh provided stability we didn\'t think was possible on standard consumer hardware. Exceptional talent.', avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d' },
       { name: 'Sarah Chen', role: 'Community Manager', text: 'The SHANU-MD WhatsApp bot saved us hundreds of hours in moderation and content management. The plugin system makes it incredibly flexible for our evolving needs.', avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d' },
       { name: 'Dr. Ramesh Kumar', role: 'Research Director', text: 'For a 17-year-old, his grasp on system architecture and IoT integration is simply staggering. The smart plant care system he built was flawless and intuitive.', avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704b' }
     ];
@@ -448,7 +448,7 @@ export default function DashboardClient() {
       {/* Nav */}
       <nav className="admin-nav">
         <div className="admin-flex-row">
-          <Link href="/" className="admin-brand">Shanu<span>Fx</span></Link>
+          <Link href="/" className="admin-brand">Shanu<span>TechX</span></Link>
           <span className="admin-badge">Admin</span>
         </div>
         <div className="admin-nav-right">
@@ -729,7 +729,7 @@ export default function DashboardClient() {
                   id="settings-title"
                   type="text"
                   className="admin-settings-input admin-setting-title-input"
-                  placeholder="ShanuFx Portfolio"
+                  placeholder="SHANUTECHX Portfolio"
                   value={settings.siteTitle || ''}
                   onChange={e=>setSettings((s: SiteSettings)=>({...s,siteTitle:e.target.value}))}
                 />

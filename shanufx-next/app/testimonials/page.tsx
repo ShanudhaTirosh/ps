@@ -5,10 +5,10 @@ import TestimonialsClient from '@/components/testimonials/TestimonialsClient';
 
 export const metadata: Metadata = {
   title: 'Testimonials',
-  description: 'Read what clients and collaborators say about working with ShanuFx, or share your own experience.',
+  description: 'Read what clients and collaborators say about working with Shanudha Tirosh (SHANUTECHX / SHANUFX), or share your own experience.',
   openGraph: {
-    title: 'ShanuFx Testimonials',
-    description: 'Community feedback and testimonials for ShanuFx.',
+    title: 'SHANUTECHX Testimonials | Shanudha Tirosh',
+    description: 'Community feedback and testimonials for Shanudha Tirosh (SHANUTECHX / SHANUFX).',
     images: [{ url: '/assets/img/og-index.webp' }],
   },
 };

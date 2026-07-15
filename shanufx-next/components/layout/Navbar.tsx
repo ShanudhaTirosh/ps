@@ -176,7 +176,7 @@ export default function Navbar() {
           >
             <div className="nav-logo-icon">S</div>
             <span className="nav-logo-text">
-              ShanuFx
+              SHANUTECHX
             </span>
           </Link>
 

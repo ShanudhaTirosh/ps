@@ -53,7 +53,7 @@ export default function ShowcaseClient() {
       <div className="showcase-header">
         <span className="badge badge-purple">Premium Showcase</span>
         <h1 className="section-title-xl">
-          ShanuFx <span className="text-gradient">Innovations</span>
+          SHANUTECHX <span className="text-gradient">Innovations</span>
         </h1>
         <div className="section-divider" />
         <p className="section-subtitle">

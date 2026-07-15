@@ -108,7 +108,7 @@ export default function MaintenanceGuard({ children }: { children: ReactNode }) 
             </h1>
 
             <p className="section-subtitle" style={{ fontSize: '0.9rem', color: 'var(--text-2)', lineHeight: 1.7, marginBottom: '2rem' }}>
-              We are currently upgrading server systems and deploying optimizations. ShanuFx will be online shortly. Thank you for your patience!
+              We are currently upgrading server systems and deploying optimizations. SHANUTECHX will be online shortly. Thank you for your patience!
             </p>
 
             {/* Quick Contact Options */}
