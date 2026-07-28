@@ -11,11 +11,11 @@ import MaintenanceGuard from '@/components/layout/MaintenanceGuard';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Shanudha Tirosh | SHANUTECHX — Developer Portfolio',
-    template: '%s | SHANUTECHX',
+    default: 'Shanudha Tirosh — Full-Stack Developer & System Innovator',
+    template: '%s | Shanudha Tirosh',
   },
-  description: 'Full-Stack WEB & DESKTOP Developer, Android System Innovator & IoT Engineer from Sri Lanka. Portfolio of Shanudha Tirosh (SHANUTECHX / SHANUFX).',
-  keywords: ['SHANUTECHX', 'SHANUFX', 'ShanuFx', 'Shanudha Tirosh', 'Developer Portfolio', 'Full-Stack', 'Android', 'IoT', 'React', 'Firebase', 'Web Developer Sri Lanka', 'Android Developer', 'IoT Solutions', 'Netch Solutions'],
+  description: 'Shanudha Tirosh - Full-Stack Developer specializing in Web & Desktop Development, Android Systems, IoT Solutions, and Hosting Platforms. Operating under the SHANUTECHX brand from Sri Lanka.',
+  keywords: ['Shanudha Tirosh', 'SHANUTECHX', 'SHANUFX', 'ShanuFx', 'Full-Stack Developer', 'Web Development', 'Desktop Development', 'Android System Developer', 'IoT Solutions', 'Hosting Platform', 'Developer Portfolio', 'React', 'Firebase', 'Web Developer Sri Lanka', 'Cloud Hosting'],
   authors: [{ name: 'Shanudha Tirosh', url: 'https://www.linkedin.com/in/shanudhatirosh/' }],
   metadataBase: new URL('https://info.shanutechx.com'),
   alternates: {
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'SHANUTECHX Portfolio',
-    title: 'Shanudha Tirosh | SHANUTECHX — WEB & DESKTOP Developer, Android & System Developer Portfolio',
-    description: 'Revolutionizing mobile networking and system performance. Portfolio of Shanudha Tirosh, developer of NovaMesh, NovaNetX, SocialGrab, Telegram Drive — under SHANUTECHX and SHANUFX.',
+    title: 'Shanudha Tirosh — Full-Stack Developer & Hosting Platform',
+    description: 'Shanudha Tirosh - Full-Stack Developer building Web & Desktop Applications, Android Systems, IoT Solutions, and comprehensive Hosting Services under the SHANUTECHX brand.',
     url: 'https://info.shanutechx.com/',
     emails: ['info@shanutechx.com', 'info.shanudhatirosh@gmail.com'],
     phoneNumbers: ['+94765749332'],
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@ShanuFx',
     creator: '@ShanuFx',
-    title: 'Shanudha Tirosh | SHANUTECHX — WEB & DESKTOP Developer, Android & System Developer Portfolio',
-    description: 'Pushing the boundaries of Android System Internals and IoT automation. Projects by Shanudha Tirosh (SHANUTECHX / SHANUFX) from Sri Lanka.',
+    title: 'Shanudha Tirosh — Full-Stack Developer & Hosting Platform',
+    description: 'Full-Stack Developer creating Web & Desktop Apps, Android Systems, IoT Solutions, and Hosting Services under SHANUTECHX from Sri Lanka.',
     images: ['/assets/og-image.webp'],
   },
   robots: {
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   category: 'technology',
   classification: 'Portfolio, Technology, Software Development',
   creator: 'Shanudha Tirosh',
-  publisher: 'Netch Solutions and Web Designer and Developer and Android System Innovator & IoT Engineer',
+  publisher: 'Shanudha Tirosh - SHANUTECHX',
   formatDetection: {
     email: false,
     address: false,

@@ -6,8 +6,8 @@
 
 export const siteConfig = {
   name: 'SHANUTECHX',
-  title: 'Shanudha Tirosh | SHANUTECHX — Developer Portfolio',
-  description: 'Full-Stack WEB & DESKTOP Developer, Android System Innovator & IoT Engineer from Sri Lanka. Portfolio of Shanudha Tirosh (SHANUTECHX / SHANUFX).',
+  title: 'Shanudha Tirosh — Full-Stack Developer & System Innovator',
+  description: 'Shanudha Tirosh - Full-Stack Developer building Web & Desktop Applications, Android Systems, IoT Solutions, and comprehensive Hosting Services under the SHANUTECHX brand.',
   url: 'https://info.shanutechx.com',
   ogImage: '/assets/og-image.webp',
   links: {

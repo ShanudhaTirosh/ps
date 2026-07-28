@@ -1,6 +1,7 @@
 /* TEAM */
 Developer & Designer: Shanudha Tirosh
-Role: Full-Stack Developer, Android System Innovator, IoT Engineer
+Role: Full-Stack Developer & System Innovator
+Specialties: Web Development, Desktop Applications, Android Systems, IoT Solutions, Hosting Platforms
 Contact: info@shanutechx.com
 WhatsApp: +94765749332
 LinkedIn: https://www.linkedin.com/in/shanudhatirosh/
@@ -9,7 +10,7 @@ Location: Ambalangoda, Sri Lanka
 
 /* ORGANIZATION */
 Brand: SHANUTECHX (also known as SHANUFX / ShanuFx)
-Company: Netch Solutions
+Services: Full-Stack Development, Hosting Platform, Cloud Services
 Founded: 2023
 Email: info@shanutechx.com
 Phone: +94765749332
