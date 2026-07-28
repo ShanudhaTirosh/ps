@@ -1,0 +1,59 @@
+/* TEAM */
+Developer & Designer: Shanudha Tirosh
+Role: Full-Stack Developer, Android System Innovator, IoT Engineer
+Contact: info@shanutechx.com
+WhatsApp: +94765749332
+LinkedIn: https://www.linkedin.com/in/shanudhatirosh/
+GitHub: https://github.com/ShanudhaTirosh
+Location: Ambalangoda, Sri Lanka
+
+/* ORGANIZATION */
+Brand: SHANUTECHX (also known as SHANUFX / ShanuFx)
+Company: Netch Solutions
+Founded: 2023
+Email: info@shanutechx.com
+Phone: +94765749332
+
+/* SITE */
+Last update: 2026-07-28
+Language: English
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: React 19, Next.js 16, TypeScript
+Backend: Firebase, Node.js
+IDE: Visual Studio Code
+Version Control: Git
+
+/* TECH STACK */
+Frontend: React 19, Next.js 16.2.6, TypeScript
+Styling: CSS3, Framer Motion
+Backend: Firebase, Firebase Admin
+Hosting: Firebase Hosting
+Tools: Sharp, ESLint
+
+/* SOCIAL MEDIA */
+LinkedIn: https://www.linkedin.com/in/shanudhatirosh/
+GitHub: https://github.com/ShanudhaTirosh
+Facebook: https://www.facebook.com/tirosh.shanudha
+Instagram: https://www.instagram.com/shanudha_tirosh/
+WhatsApp: https://wa.me/94765749332
+
+/* PROJECTS */
+Notable Projects:
+- NovaMesh: Advanced mesh networking platform
+- NovaNetX: High-performance VPN solution
+- SocialGrab: Social media downloader
+- Telegram Drive: Cloud storage integration
+- WhatsApp Bot Suite: Automation tools
+
+/* THANKS */
+Special thanks to the open-source community and all contributors
+who make modern web development possible.
+
+/* SITE FEATURES */
+- Fully responsive design
+- SEO optimized
+- Progressive Web App (PWA) ready
+- Dark mode optimized
+- Accessibility compliant
+- Performance optimized
+- Security hardened

@@ -34,8 +34,15 @@ export default function JsonLd() {
         height: 630,
       },
       jobTitle: 'Android System Developer & IoT Engineer',
-      description: 'Full-stack software engineer specializing in Android System Internals, IoT Automation, and high-performance mobile networking.',
-      email: 'info.shanudhatirosh@gmail.com',
+      description: 'Full-Stack Developer specializing in Web & Desktop Development, Android System Internals, IoT Automation, and hosting platforms. Building comprehensive solutions under the SHANUTECHX brand.',
+      email: 'info@shanutechx.com',
+      telephone: '+94765749332',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Ambalangoda',
+        addressRegion: 'Southern Province',
+        addressCountry: 'LK',
+      },
       alumniOf: {
         '@type': 'EducationalOrganization',
         name: 'G/Dharmashoka College, Ambalangoda',
@@ -60,8 +67,9 @@ export default function JsonLd() {
       sameAs: [
         'https://www.linkedin.com/in/shanudhatirosh/',
         'https://github.com/ShanudhaTirosh',
-        'https://web.facebook.com/tirosh.shanudha/',
+        'https://www.facebook.com/tirosh.shanudha',
         'https://www.instagram.com/shanudha_tirosh/',
+        'https://wa.me/94765749332',
       ],
     },
     // Organization
@@ -89,12 +97,27 @@ export default function JsonLd() {
       },
       description: 'Sri Lankan software engineering brand specializing in Android system internals, IoT automation, VPN platforms, and web applications.',
       areaServed: ['Sri Lanka', 'Worldwide'],
-      email: 'info.shanudhatirosh@gmail.com',
+      email: 'info@shanutechx.com',
+      telephone: '+94765749332',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Ambalangoda',
+        addressRegion: 'Southern Province',
+        addressCountry: 'LK',
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+94765749332',
+        contactType: 'Customer Service',
+        email: 'info@shanutechx.com',
+        availableLanguage: ['English', 'Sinhala'],
+      },
       sameAs: [
         'https://github.com/ShanudhaTirosh',
         'https://www.linkedin.com/in/shanudhatirosh/',
-        'https://web.facebook.com/tirosh.shanudha/',
+        'https://www.facebook.com/tirosh.shanudha',
         'https://www.instagram.com/shanudha_tirosh/',
+        'https://wa.me/94765749332',
       ],
     },
     // BreadcrumbList

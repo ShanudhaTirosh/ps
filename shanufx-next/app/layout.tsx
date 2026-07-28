@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     template: '%s | SHANUTECHX',
   },
   description: 'Full-Stack WEB & DESKTOP Developer, Android System Innovator & IoT Engineer from Sri Lanka. Portfolio of Shanudha Tirosh (SHANUTECHX / SHANUFX).',
-  keywords: ['SHANUTECHX', 'SHANUFX', 'ShanuFx', 'Shanudha Tirosh', 'Developer Portfolio', 'Full-Stack', 'Android', 'IoT', 'React', 'Firebase'],
-  authors: [{ name: 'Shanudha Tirosh' }],
+  keywords: ['SHANUTECHX', 'SHANUFX', 'ShanuFx', 'Shanudha Tirosh', 'Developer Portfolio', 'Full-Stack', 'Android', 'IoT', 'React', 'Firebase', 'Web Developer Sri Lanka', 'Android Developer', 'IoT Solutions', 'Netch Solutions'],
+  authors: [{ name: 'Shanudha Tirosh', url: 'https://www.linkedin.com/in/shanudhatirosh/' }],
   metadataBase: new URL('https://info.shanutechx.com'),
   alternates: {
     canonical: '/',
@@ -32,7 +32,8 @@ export const metadata: Metadata = {
     title: 'Shanudha Tirosh | SHANUTECHX — WEB & DESKTOP Developer, Android & System Developer Portfolio',
     description: 'Revolutionizing mobile networking and system performance. Portfolio of Shanudha Tirosh, developer of NovaMesh, NovaNetX, SocialGrab, Telegram Drive — under SHANUTECHX and SHANUFX.',
     url: 'https://info.shanutechx.com/',
-    emails: ['info.shanudhatirosh@gmail.com'],
+    emails: ['info@shanutechx.com', 'info.shanudhatirosh@gmail.com'],
+    phoneNumbers: ['+94765749332'],
     countryName: 'Sri Lanka',
     images: [
       {
@@ -54,6 +55,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -61,6 +63,11 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'SHANUTECHX',
   },
   verification: {
     google: 'google674d98d6ab0d9910',
@@ -112,6 +119,8 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         />
         <meta name="google-site-verification" content="google674d98d6ab0d9910" />
+        <link rel="author" href="/humans.txt" />
+        <link rel="security" href="/.well-known/security.txt" />
       </head>
       <body suppressHydrationWarning>
         <AuthProvider>

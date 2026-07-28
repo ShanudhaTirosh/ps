@@ -6,10 +6,30 @@ import ShowcaseClient from '@/components/showcase/ShowcaseClient';
 export const metadata: Metadata = {
   title: 'Showcase',
   description: 'Browse the full collection of SHANUTECHX projects — Android tools, web platforms, IoT solutions, and more by Shanudha Tirosh.',
+  keywords: ['SHANUTECHX Projects', 'Portfolio', 'Android Apps', 'IoT Solutions', 'Web Development', 'NovaMesh', 'NovaNetX', 'SocialGrab'],
+  authors: [{ name: 'Shanudha Tirosh', url: 'https://www.linkedin.com/in/shanudhatirosh/' }],
   openGraph: {
     title: 'SHANUTECHX Showcase | Shanudha Tirosh',
     description: 'A curated collection of projects by Shanudha Tirosh spanning Android, IoT, full-stack, and bot development under SHANUTECHX and SHANUFX.',
-    images: [{ url: '/assets/img/og-showcase.webp' }],
+    url: 'https://info.shanutechx.com/showcase',
+    type: 'website',
+    images: [
+      { 
+        url: '/assets/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'SHANUTECHX Project Showcase'
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SHANUTECHX Showcase | Shanudha Tirosh',
+    description: 'A curated collection of projects by Shanudha Tirosh spanning Android, IoT, full-stack, and bot development.',
+    images: ['/assets/og-image.webp'],
+  },
+  alternates: {
+    canonical: '/showcase',
   },
 };
 

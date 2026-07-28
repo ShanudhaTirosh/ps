@@ -1,0 +1,19 @@
+Contact: mailto:info@shanutechx.com
+Contact: https://www.linkedin.com/in/shanudhatirosh/
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, si
+Canonical: https://info.shanutechx.com/.well-known/security.txt
+
+# Security Policy for SHANUTECHX Portfolio
+
+# If you discover a security vulnerability, please report it to:
+# Email: info@shanutechx.com
+# We appreciate responsible disclosure and will respond promptly.
+
+# Please include:
+# - Description of the vulnerability
+# - Steps to reproduce
+# - Potential impact
+# - Any suggested fixes
+
+# Thank you for helping keep SHANUTECHX secure!

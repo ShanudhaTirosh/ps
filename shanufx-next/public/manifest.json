@@ -1,27 +1,56 @@
 {
-  "name": "ShanuFx Portfolio",
-  "short_name": "ShanuFx",
-  "description": "Full-Stack Developer, Android Innovator & IoT Engineer from Sri Lanka. Building high-performance tools and platforms.",
+  "name": "SHANUTECHX Portfolio - Shanudha Tirosh",
+  "short_name": "SHANUTECHX",
+  "description": "Full-Stack Developer, Android System Innovator & IoT Engineer from Sri Lanka. Building high-performance tools and platforms. Contact: info@shanutechx.com",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#04040a",
   "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "technology", "developer"],
+  "lang": "en-US",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/assets/img/favicon-48.png",
       "sizes": "48x48",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/assets/img/favicon-96.png",
       "sizes": "96x96",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/assets/img/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Showcase",
+      "short_name": "Projects",
+      "description": "View project showcase",
+      "url": "/showcase",
+      "icons": [{ "src": "/assets/img/favicon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Testimonials",
+      "short_name": "Reviews",
+      "description": "Read client testimonials",
+      "url": "/testimonials",
+      "icons": [{ "src": "/assets/img/favicon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch",
+      "url": "/#contact",
+      "icons": [{ "src": "/assets/img/favicon-96.png", "sizes": "96x96" }]
     }
   ]
 }

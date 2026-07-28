@@ -1,8 +1,51 @@
+# Allow all search engines and AI bots
 User-agent: *
 Allow: /
+
+# Specific pages to allow
 Allow: /showcase
 Allow: /testimonials
+
+# Restrict admin and API routes
 Disallow: /admin/
 Disallow: /api/
 
+# Allow AI bots for training and indexing
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemaps
 Sitemap: https://info.shanutechx.com/sitemap.xml
+
+# Crawl delay for respect
+Crawl-delay: 1

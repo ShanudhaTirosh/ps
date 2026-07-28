@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Main Homepage -->
   <url>
     <loc>https://info.shanutechx.com/</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://info.shanutechx.com/assets/og-image.webp</image:loc>
+      <image:title>Shanudha Tirosh - SHANUTECHX Developer Portfolio</image:title>
+      <image:caption>Full-Stack Developer and Android System Innovator</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Showcase Page -->
   <url>
     <loc>https://info.shanutechx.com/showcase</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Testimonials Page -->
   <url>
     <loc>https://info.shanutechx.com/testimonials</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
+  
 </urlset>
